@@ -1,0 +1,82 @@
+{{ 'component-currency.css' | asset_url | stylesheet_tag }}
+
+<div class="currency__select js-currency-modal js-currency" data-currency-selector>
+    <div class="currency__header">
+        <p class="currency__header-title">{{ 'currency.selected' | t}}</p>
+        <button class="button--icon currency__header-close js-close-currency">
+            {% render 'object-icon', icon: 'close' %}
+        </button>
+    </div>
+    <div class="currency__body">
+        <p class="currency__body-text">{{ 'currency.current_select' | t}}</p>
+        <div class="currency__selector js-currency-list">
+            <div class="currency__selector-header">
+                <p class="currency__current js-current-currency">
+                </p>
+                <span class="currency__selector-icon">
+                    {% render 'object-icon', icon: 'chevron-down' %}
+                </span>
+            </div>
+          
+            <ul class="currency__list js-currency-dropdown">
+                {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+                {% for block in section.blocks %}
+                    {% if codes contains block.settings.currency %}
+                        <li class="currency__item js-currency-selector" data-currency="{{ block.settings.currency }}">
+                            {%- if block.settings.flag != blank -%}
+                            <span class="currency__flag">{{ block.settings.flag }}</span>
+                            {% endif %}
+                            <span class="currency__text">{{ block.settings.title }} ({{ block.settings.currency }})</span>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="currency__buttons">
+        <button class="button button--full js-close-currency">{{ 'currency.confirm' | t}}</button>
+    </div>
+</div>
+
+{{ 'switcher-currency.js' | asset_url | script_tag }}
+
+{% schema %} 
+    {
+        "name": "Currency Switcher",
+        "tag": "section",
+        "blocks": [
+            {
+                "type": "currency",
+                "name": "Currency",
+                "settings": [
+                        {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Country Code",
+                        "default": "UK"
+                        },
+                        {
+                            "type": "text",
+                            "id": "symbol",
+                            "label": "Currency Symbol",
+                            "default": "£",
+                            "info": "e.g. £"
+                        },
+                        {
+                            "type": "text",
+                            "id": "currency",
+                            "label": "Currency Code",
+                            "default": "GBP",
+                            "info": "e.g. GBP - This is required for the code"
+                        },
+                        {
+                            "type": "textarea",
+                            "id": "flag",
+                            "label": "Country Flag"
+                        }
+                ]
+            }
+        ]
+    }
+{% endschema %} 

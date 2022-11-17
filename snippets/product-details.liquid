@@ -1,0 +1,37 @@
+{{ 'component-product-details.css' | asset_url | stylesheet_tag }}
+
+<div class="pdp__details-inner">
+    {% form 'product', product, id: 'addToCartForm', class: 'pdp__form  js-product-form' %}
+        <h1 class="pdp__name h3" itemprop="name" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</h1>
+        {%- if product.type != blank -%}
+            <span class="pdp__type h5">{{ product.type }}</span>
+        {%- endif -%}
+        <h4 class="pdp__prices" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+            <meta itemprop="price" content="{{ product.price | money_without_currency | replace: ',', '' }}" />
+            <div class="js-product-price">
+                {% if product.compare_at_price > product.price %}
+                    <span class="pdp__prices-compare money">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+                <span class="pdp__prices-price money">{{ product.price | money }}</span>
+            </div>
+        </h4>
+    
+        {%- render 'product-form' -%}
+        
+        <div class="pdp__shipping">
+            <span class="pdp__shipping-icon">
+                <svg focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <use href="#icon-shipping-icon" />
+                </svg>
+            </span>
+            <span class="pdp__shipping-text h5">{{ 'products.product.shipping_price' | t: price: 'AUR$100' }}</span>
+        </div>
+        
+        {%- render 'product-accordions' -%}
+    {% endform %}
+</div>
+
+
+

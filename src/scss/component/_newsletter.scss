@@ -1,0 +1,48 @@
+@import "./_settings/core";
+
+.newsletter {
+    &--footer {
+        margin-bottom: 3rem;
+    }
+
+    &__form {
+        display: flex;
+        border: 1px solid $color-grey-3;
+        border-radius: 0.2rem;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 4rem;
+        padding: 1.2rem;
+        background-color: $color-dark1;
+        border: none;
+
+        &-icon {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+    }
+
+    &__input {
+        padding: 1.1rem 0.3rem 1.1rem 1.2rem;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        opacity: 50%;
+        color: $color-light;
+        @include font-size(12, 1.5);
+        font-weight: 400;
+        letter-spacing: 0em;
+
+        // @include mq($mq-desk) {
+        //     min-width: 22rem;
+        // }
+
+        &::placeholder {
+            color: $color-light;
+        }
+    }
+}

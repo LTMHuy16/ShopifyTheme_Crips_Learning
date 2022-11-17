@@ -1,0 +1,19 @@
+{%- liquid
+    assign button_icon = ''
+    
+    if cta_style != blank
+        assign cta_style = cta_style | prepend: 'button--' 
+    endif
+%}
+
+{%- if text != blank -%}
+    {%- if href != blank -%}
+        <a class="button {{ cta_style }} {{ cta_class }}" href="{{ href }}">
+            {{ text }}
+        </a>
+    {%- else -%}
+        <button  type="{{ type | default: 'button' }}" class="button {{ cta_style }} {{ cta_class }}">
+            {{ text }}
+        </button>
+    {%- endif -%}
+{%- endif -%}

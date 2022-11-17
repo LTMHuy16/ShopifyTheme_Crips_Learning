@@ -1,0 +1,11 @@
+<a class="site-header__logo" href="/" itemprop="url" title="{{ shop_name | escape }}">
+    {%- if logo_svg != blank -%}
+        {{ logo_svg | replace_first: 'svg', 'svg class="site-header__logo-svg"' }}
+    {%- elsif logo != blank -%}
+        <img class="site-header__logo-img" 
+            src="{{ logo | image_url: 'master' }}" 
+            srcset="{{ logo | img_url: 'master'}} 1x, {{ logo | img_url: 'master'}} 2x" 
+            alt="{{ logo.alt | default: shop_name | escape }}" 
+            loading="lazy" width="{{ logo.width }}" height="{{ logo.height }}" />
+    {%- endif -%}
+</a>

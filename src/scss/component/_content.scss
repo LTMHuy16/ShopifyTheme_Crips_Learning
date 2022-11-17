@@ -1,0 +1,153 @@
+@import "./_settings/core";
+
+.content {
+    $self: &;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &--logo {
+        padding: 0;
+    }
+
+    &--text {
+        &-light {
+            *:not(.button) {
+                color: $color-light;
+            }
+        }
+    }
+
+    &--rich-text {
+        padding: 0;
+    }
+
+    &--below {
+        @include mq($mq-desk, max) {
+            padding: 4.8rem 0 0;
+
+            &-full {
+                padding: 4.8rem 0;
+            }
+        }
+    }
+
+    &__wrap {
+        &--located {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 2rem 2.4rem;
+        }
+
+        &--hero {
+            padding: {
+                left: $spacing;
+                right: $spacing;
+            }
+
+            @include mq($mq-desk-lrg) {
+                padding: {
+                    left: $spacing-wide;
+                    right: $spacing-wide;
+                }
+            }
+        }
+    }
+
+    &--left {
+        &-top {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        &-middle {
+            justify-content: center;
+            text-align: center;
+
+            @include mq($mq-desk) {
+                text-align: left;
+            }
+        }
+
+        &-bottom {
+            justify-content: flex-end;
+            text-align: left;
+        }
+    }
+
+    &--center {
+        &-top {
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        &-middle {
+            justify-content: center;
+            text-align: center;
+        }
+
+        &-bottom {
+            justify-content: flex-end;
+            text-align: center;
+        }
+    }
+
+    &--right {
+        &-top {
+            justify-content: flex-start;
+            text-align: right;
+        }
+
+        &-middle {
+            justify-content: center;
+            text-align: right;
+        }
+
+        &-bottom {
+            justify-content: flex-end;
+            text-align: right;
+        }
+    }
+
+    &__title {
+        padding-bottom: 2rem;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    &__subtitle {
+        padding-bottom: 1.5rem;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    &__body {
+        color: $color-body;
+        line-height: 1.5;
+        padding-bottom: 2.4rem;
+        @include font-size(16);
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        & > * {
+            padding-bottom: 2rem;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    &__buttons {
+        font-size: 0;
+    }
+}

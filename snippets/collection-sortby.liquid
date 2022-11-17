@@ -1,0 +1,22 @@
+{%-liquid 
+    if collection.filters.size > 0
+        assign sort_class = "collection__toolbar-select--sort-by"
+    else
+        assign sort_class = "collection__toolbar-select--relative"
+    endif
+-%}
+
+<div class="collection__toolbar-select {{ sort_class }}">
+    <div class="collection__toolbar-wrapper">
+        <span class="collection__toolbar-text">{{ 'collections.filters.sort_by' | t }}</span>
+        <label for="SortBy" class="select-label select-label--collection">
+            <select class="select select--collection collection__toolbar-field js-collection-select" name="sort_by" id="SortBy">
+                {%- for option in collection.sort_options -%}
+                    <option class="option option--collection collection__toolbar-option" value="{{ option.value | escape }}" {% if option.value == sort_by %} selected{% endif %}>
+                        {{ option.name | escape }}
+                    </option>
+                {%- endfor -%}
+            </select>
+        </label>
+    </div>
+</div>

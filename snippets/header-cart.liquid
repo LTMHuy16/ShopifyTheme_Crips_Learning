@@ -1,0 +1,17 @@
+
+<a href="{{ routes.cart_url }}" class="site-header__cart" id="cart-icon-bubble">
+    <span class="site-header__cart-icon">
+        {% render 'object-icon', icon: 'bag' %}
+    </span>
+    <span class="site-header__cart-text">{{ "general.cart.bag" | t}}</span>
+
+    <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+    {%- if cart != empty -%}
+        <div class="site-header__cart-count">
+        {%- if cart.item_count < 100 -%}
+            <span aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+        </div>
+    {%- endif -%}
+</a>

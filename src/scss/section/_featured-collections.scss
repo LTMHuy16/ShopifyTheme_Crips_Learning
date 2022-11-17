@@ -1,0 +1,31 @@
+@import "./_settings/core";
+
+.featured-collection {
+    &--related {
+        padding: 4rem 0;
+
+        @include mq($mq-desk) {
+            padding: 6rem 0;
+        }
+    }
+
+    &__title {
+        margin-bottom: 3rem;
+        text-transform: none;
+    }
+
+    &__grid {
+        @include mq($mq-desk) {
+            width: 75%;
+        }
+    }
+
+    &__inner {
+        padding: 4.4rem 0 3rem;
+        border-bottom: 0.1rem solid #eee9ef;
+    }
+
+    &__pagination {
+        width: 100%;
+    }
+}

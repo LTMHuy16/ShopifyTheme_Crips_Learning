@@ -1,0 +1,76 @@
+button,
+.button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    color: $color-title;
+    background-color: $theme-color;
+    font-family: $font-title;
+    @include font-size(12, 1.5);
+    font-weight: $font-title-weight;
+    text-transform: uppercase;
+    border: 0.2rem solid;
+    text-align: center;
+    border-radius: 0.2rem;
+    border-color: $theme-color;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.button {
+    &:hover {
+        color: $theme-color;
+        background-color: $color-title;
+        border-color: $color-title;
+    }
+
+    &--secondary {
+        background-color: $color-title;
+        color: $theme-color;
+        border-color: $color-title;
+
+        &:hover {
+            color: $color-title;
+            background-color: $theme-color;
+            border-color: $theme-color;
+        }
+    }
+
+    &--third {
+        background-color: $color-light;
+        color: $color-title;
+        border-color: $theme-color;
+
+        &:hover {
+            background-color: $theme-color;
+            color: $color-title;
+            border-color: $theme-color;
+        }
+    }
+
+    // button banner
+    &--banner {
+        text-decoration: underline;
+    }
+
+    // button large
+    &--medium {
+        padding: 1.2rem 3rem;
+    }
+
+    &--icon {
+        display: inline-block;
+        min-width: unset;
+        padding: 0;
+        border: none;
+        outline: none;
+        margin: 0;
+        font-size: 0;
+        color: inherit;
+        background: none;
+    }
+
+    &--full {
+        width: 100%;
+    }
+}

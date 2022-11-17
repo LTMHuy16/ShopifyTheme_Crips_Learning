@@ -1,0 +1,72 @@
+@import "./_settings/core";
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: $font-body;
+    font-weight: $font-body-weight;
+    @include font-size(16);
+    color: $color-title;
+}
+
+a,
+span {
+    display: block;
+    color: $color-title;
+}
+
+.hidden {
+    display: none;
+
+    &--desk {
+        @include mq($mq-desk) {
+            display: none;
+        }
+    }
+
+    &--mob {
+        @include mq($mq-desk, max) {
+            display: none;
+        }
+    }
+}
+
+.visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    word-wrap: normal;
+    @include font-size(16);
+}
+
+.section {
+    &-header__404 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 600px;
+        height: 50vh;
+        text-align: center;
+        margin: 0 auto;
+
+        &-title {
+            padding-bottom: 2rem;
+        }
+
+        &-content {
+            padding-bottom: 2rem;
+        }
+    }
+
+    &-border {
+        border-bottom: 0.1rem solid $color-border-section;
+    }
+}

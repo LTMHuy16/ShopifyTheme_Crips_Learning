@@ -1,0 +1,78 @@
+{%- liquid
+    assign content_color = 'text-dark'
+    assign cta_class = ''
+    if block 
+        assign title = block.settings.title
+        assign title_size = block.settings.title_size
+        assign subtitle = block.settings.subtitle
+        assign subtitle_size = block.settings.subtitle_size
+        assign body = block.settings.body
+        assign body_size = block.settings.body_size
+        assign cta_text = block.settings.cta_text
+        assign cta_link = block.settings.cta_link
+        assign cta_style = block.settings.cta_style
+        assign cta_icon = block.settings.cta_icon
+        assign cta_text_2 = block.settings.cta_text_2
+        assign cta_link_2 = block.settings.cta_link_2
+        assign cta_style_2 = block.settings.cta_style_2
+        assign content_color = block.settings.content_color
+        assign content_horizontal = block.settings.horizontal
+        assign content_vertical = block.settings.vertical
+    endif
+
+    assign content_class = "content" | append: ' content--' | append: content_color
+    assign title_class = "content__title"
+    assign subtitle_class = "content__subtitle"
+    assign body_class = "content__body"
+    assign buttons_class = "content__buttons"
+
+    if content_vertical == blank 
+        assign content_vertical = 'middle'
+    endif
+        
+    if content_vertical and content_horizontal
+        assign content_class = content_class | append: ' content--' | append: content_horizontal | append: '-' | append: content_vertical
+    endif
+
+    if class != blank
+        assign content_class = content_class | append: ' content--' | append: class
+        assign title_class = title_class | append: ' content__title--' | append: class
+        assign subtitle_class = subtitle_class | append: ' content__subtitle--' | append: class
+        assign body_class = body_class | append: ' content__body--' | append: class
+        assign buttons_class = buttons_class | append: ' content__buttons--' | append: class
+    endif
+    
+    if button_class != blank 
+        assign cta_class = button_class
+    endif    
+%}
+
+
+<div class="{{ content_class }}">
+    {%- if title != blank -%}
+        <h2 class="{{ title_class }} {{ title_size }}">{{ title }}</h2>
+    {%- endif -%}
+
+    {%- if subtitle != blank -%}
+        <h3 class="{{ subtitle_class }} {{ subtitle_size }}">{{ subtitle }}</h3>
+    {%- endif -%}
+
+    {%- if body != blank -%}
+        <div class="{{ body_class }} {{ body_size }}">{{ body }}</div>
+    {%- endif -%}
+
+    
+
+    {%- if cta_text != blank or cta_text_2 != blank -%}
+        <div class="{{ buttons_class }}">
+            
+            {%- if cta_text != blank -%}
+                    {%- render 'ob-button', text: cta_text, href: cta_link, cta_style: cta_style, cta_icon: cta_icon, cta_class: cta_class -%}
+            {%- endif -%}
+
+            {%- if cta_text_2 != blank -%}
+                {%- render 'ob-button', text: cta_text_2, href: cta_link_2, cta_style: cta_style_2, icon: cta_icon_2, cta_class: cta_class -%}
+            {%- endif -%}
+        </div>
+    {%- endif -%}
+</div>

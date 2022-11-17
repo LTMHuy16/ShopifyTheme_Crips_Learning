@@ -1,0 +1,46 @@
+{%- if section.blocks.size > 0 -%}
+    <style>
+        {%- for block in section.blocks -%}
+            {%- if block.settings.title != blank -%}
+            .swatches-{{ block.settings.title | handle }}{
+                {%- if block.settings.background_color != blank -%}
+                    background-color: {{ block.settings.background_color }};
+                {%- endif -%}
+                {%- if block.settings.background_image != blank -%}
+                    background: url({{ block.settings.background_image }}) no-repeat center;
+                {%- endif -%}
+            }
+            {%- endif -%}
+        {%- endfor -%}
+    </style>
+{%- endif -%}
+
+{%- schema -%}
+{
+    "name": "Colour Swatches",
+    "blocks": [
+        {
+            "type": "tags",
+            "name": "Colour",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Colour",
+                    "default": "Blue"
+                },
+                {
+                    "type": "color",
+                    "id": "background_color",
+                    "label": "Background Color"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "background_image",
+                    "label": "Or Background Image"
+                }
+            ]
+        }
+    ]
+}
+{%- endschema -%}

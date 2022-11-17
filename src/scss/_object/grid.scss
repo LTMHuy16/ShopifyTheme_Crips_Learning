@@ -1,0 +1,100 @@
+$grid-columns: 6;
+
+.flexbox {
+    $self: &;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include mq($mq-desk) {
+        margin: {
+            left: -1.5rem;
+            right: -1.5rem;
+        }
+    }
+
+    &.owl-carousel {
+        margin: 0;
+    }
+
+    &--middle {
+        align-items: center;
+    }
+
+    &--column {
+        flex-direction: column;
+    }
+
+    &--no-wrap {
+        flex-wrap: unset;
+    }
+
+    &--no-gap {
+        gap: unset;
+        margin: 0;
+
+        #{$self}__item {
+            padding: {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    &--reverse {
+        flex-direction: row-reverse;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
+
+    &--align-bottom {
+        align-self: flex-end;
+    }
+
+    &--horizontal {
+        width: 62.4%;
+    }
+
+    &__item {
+        width: 100%;
+
+        @include mq($mq-desk) {
+            @for $i from 2 through $grid-columns {
+                &--#{$i} {
+                    width: 100% / $i;
+                }
+            }
+        }
+
+        @include mq($mq-desk) {
+            padding: {
+                left: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        &--large {
+            @include mq($mq-desk) {
+                width: 66.6667%;
+            }
+        }
+
+        &--small {
+            @include mq($mq-desk) {
+                width: 33.3333%;
+            }
+        }
+
+        &--col {
+            @include mq($mq-desk, max) {
+                padding-bottom: 2.4rem;
+
+                &:last-child {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

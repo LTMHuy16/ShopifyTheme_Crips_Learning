@@ -1,0 +1,38 @@
+{%-liquid
+  assign theme_color = settings.theme_color
+  assign color_title = settings.color_title
+  assign color_dark = settings.color_dark
+  assign color_light = settings.color_light
+-%}
+
+{% style %}
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+      :root {
+        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-body-style: {{ settings.type_body_font.style }};
+        --font-body-weight: {{ settings.type_body_font.weight }};
+
+        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-heading-style: {{ settings.type_header_font.style }};
+        --font-heading-weight: {{ settings.type_header_font.weight }};
+
+        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+
+        --theme-color : {{ theme_color }};
+
+        --color-title: {{ color_title }};
+        --color-dark: {{ color_dark }};
+        --color-light: {{ color_light }};
+
+        --font-title-weight: 600;
+        --font-medium-weight: 500;
+        --font-body-weight: 400;
+
+      }
+    {% endstyle %}

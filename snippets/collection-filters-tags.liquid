@@ -1,0 +1,28 @@
+{% capture filter_content %}
+    <div class="collection__filters-body">
+        {%- for filter in collection.filters -%}
+            {% render 'collection-filter-list', filter: filter, results: collection, forloop: forloop %}
+        {%- endfor -%}
+    </div>
+{% endcapture %}
+
+<div class="collection__filters js-filters">
+    <header class="collection__filters-heading hidden--desk h4">
+        {{ 'collections.filters.filter' | t }}
+        <a  href="{{ collection.url }}" class="button button--icon collection__filters-heading-clear">
+            {{ 'collections.filters.clear' | t}}
+        </a>            
+       
+        <button class="collection__filters-close button button--icon js-close-filter" type="button">
+            <i class='icon-close'></i>
+        </button>
+    </header>
+    <form class="collection__filters-form js-filter-form">
+        {{ filter_content }}
+        <div class="collection__filter-footer hidden--desk">
+            <button class="button button--primary button--full" type="submit">
+                {{ 'collections.filters.apply' | t }}
+            </button>
+        </div>
+    </form>
+</div>

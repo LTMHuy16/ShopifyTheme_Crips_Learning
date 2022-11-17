@@ -1,0 +1,111 @@
+@import "./_settings/core";
+
+.pdp__accordions {
+    $self: &;
+
+    &-item {
+        padding-top: 2rem;
+
+        &.is-open {
+            #{$self} {
+                &-content {
+                    max-height: 100rem;
+                }
+            }
+        }
+    }
+
+    &-title {
+        display: flex;
+        align-items: center;
+        column-gap: 1.8rem;
+        padding-bottom: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-bottom: 0.1rem solid $color-border-primary;
+
+        @include mq($mq-desk) {
+            column-gap: 3rem;
+        }
+    }
+
+    &-detail {
+        font-weight: 600;
+    }
+
+    &-name {
+        color: $color-grey;
+    }
+
+    &-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1.2s ease;
+
+        &-inner {
+            margin-top: 1.5rem;
+            @include font-size(13, 1.69);
+            color: $color-title;
+
+            span {
+                display: inline-block;
+            }
+
+            ul {
+                list-style: disc;
+                list-style-position: inside;
+                padding-left: 0.8rem;
+            }
+
+            table {
+                margin: 1rem 0 2rem;
+                width: 100%;
+                border-collapse: collapse;
+                border: 0.1rem solid $color-border-primary;
+                @include font-size(9, 1.69);
+
+                @include mq($mq-mob) {
+                    @include font-size(13);
+                }
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: 700;
+                @include font-size(13, 1.69);
+            }
+
+            thead {
+                background-color: $color-bg-grey;
+                border-bottom: 0.1rem solid $color-border-primary;
+
+                th {
+                    font-weight: 500;
+                }
+            }
+
+            tr {
+                border-bottom: 0.1rem solid $color-border-primary;
+            }
+
+            th,
+            td {
+                text-align: center;
+                font-weight: 400;
+                padding: 0.9rem 0.4rem;
+            }
+
+            a {
+                display: block;
+                @include font-size(13, 1.69);
+                font-weight: 500;
+                color: $color-grey-3;
+                text-decoration: underline;
+            }
+        }
+    }
+}

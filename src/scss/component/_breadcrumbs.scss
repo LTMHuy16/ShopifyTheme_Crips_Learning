@@ -1,0 +1,20 @@
+@import "./_settings/core";
+
+.breadcrumbs {
+    background-color: $color-bg-grey;
+    color: $color-title;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 0;
+    }
+
+    &__home {
+        color: $color-grey;
+    }
+
+    &__divider {
+        margin: 0 1.24rem;
+    }
+}

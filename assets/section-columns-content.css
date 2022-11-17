@@ -1,0 +1,18 @@
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  .col-content__row {
+    margin: 0 -1rem; } }
+
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  .col-content__item {
+    width: 50%;
+    padding: 0 1rem; } }
+
+.col-content__item-inner {
+  max-width: 36rem;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  margin-left: auto; }
+
+@media screen and (min-width: 960px) {
+  .col-content__item-inner {
+    margin-bottom: 5rem; } }

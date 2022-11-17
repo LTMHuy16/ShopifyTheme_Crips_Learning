@@ -1,0 +1,59 @@
+@import "./_settings/core";
+
+.pagination {
+    &-wrapper {
+        padding-top: 3rem;
+        border-top: 0.1rem solid $color-border-primary;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__item {
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        &:not(:last-child) {
+            margin-right: 0.8rem;
+        }
+    }
+
+    &__link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: rgba(var(--color-background), 1);
+
+        svg {
+            width: 0.8rem;
+        }
+
+        &--current {
+            background-color: $theme-color;
+            color: var(--color-light);
+        }
+
+        &--disable {
+            cursor: not-allowed;
+        }
+
+        &--prev {
+            margin-right: 1.2rem;
+        }
+
+        &-arrow {
+            &:hover {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+}

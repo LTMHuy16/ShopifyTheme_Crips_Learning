@@ -1,0 +1,44 @@
+{{ 'component-product-banner.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+    assign blocks_size = section.blocks.size
+-%}
+
+{% if blocks_size > 0 %}
+    {{ 'section-blog.css' | asset_url | stylesheet_tag }}   
+
+    <div class="pdp__banner">
+       <div class="pdp__banner-inner">
+        {% for block in section.blocks %}
+            {%- liquid
+                assign title = block.settings.title
+                assign title_size = block.settings.title_size
+                assign subtitle = block.settings.subtitle
+                assign subtitle_size = block.settings.subtitle_size
+                assign body = block.settings.body
+                assign body_size = block.settings.body_size
+            -%}
+            {% assign logo_svg = block.settings.logo_svg %}
+            {% if block.type contains 'content-image' %}
+                <div class="pdp__banner-row">
+                    {%- if title != blank -%}
+                        <h2 class="pdp__banner-title {{ title_size }}">
+                            {%- if logo_svg != blank -%}
+                                {{ logo_svg | replace_first: 'svg', 'svg class="pdp__banner-logo"' }}
+                            {%- elsif logo != blank -%}
+                                {%- assign assign image_size = '1120x1200,560x600,560x600,560x600' -%}
+                                {%- render 'ob_image', block: block, image_size: image_size -%}
+                            {%- endif -%}
+                            {{ title }}
+                        </h2>
+                    {%- endif -%}
+                    {%- if body != blank -%}
+                        <div class="pdp__banner-body {{ body_size }}">{{ body }}</div>
+                    {%- endif -%}
+                </div>
+            {% endif %}  
+        {% endfor %}
+       </div>
+    </div>
+{% endif %}
+

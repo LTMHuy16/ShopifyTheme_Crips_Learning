@@ -1,0 +1,78 @@
+<div class="cart__summary">
+    <form action="{{ routes.cart_url }}" method="post" novalidate class="cart__summary-inner">
+        {% if settings.cart_notes_enable %}
+            <div class="grid__item medium-up--seven-twelfths">
+                <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            </div>
+        {% endif %}
+
+            <div class="cart__summary-subtotal">
+                {% assign str_items_count = 'cart.general.item' | t %}
+                {% if cart.item_count > 1 %}
+                    {% assign str_items_count = 'cart.general.items' | t %}
+                {% endif %}
+                <h2 class="h5 cart__summary-subtotal-title">{{ 'cart.general.subtotal' | t }} <span class="h5 cart__summary-subtotal-count">({{ cart.item_count }} {{ str_items_count }})</span></h2>
+                <p class="h5 cart__subtotal-price">{{ cart.total_price | money }}</p>
+            </div>
+
+        {% if cart.total_discounts > 0 %}
+            {% assign cartTotalDiscounts = cart.total_discounts | money %}
+            <p class="cart__savings">{{ 'cart.general.savings_html' | t: savings: cartTotalDiscounts }}</p>
+        {% endif %}
+
+        <div class="cart__summary-shipping">
+            <span>
+                {{ 'cart.general.shipping_at_checkout' | t }}<br />
+                {% if settings.enable_currencies %}
+                    {{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
+                {% endif %}
+            </span>
+        </div>
+
+        {% if settings.cart_terms_conditions_enable %}
+            <p class="ajaxcart__note ajaxcart__note--terms">
+                <input type="checkbox" id="CartPageAgree" />
+                <label for="CartPageAgree">
+                    {% if settings.cart_terms_conditions_link != blank %}
+                        {{ 'cart.general.terms_html' | t: url: settings.cart_terms_conditions_link }}
+                    {% else %}
+                        {{ 'cart.general.terms' | t }}
+                    {% endif %}
+                </label>
+            </p>
+        {% endif %}
+
+        {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+            <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
+        {% endif %}
+
+        <div class="cart__summary-buttons">
+            <button type="submit" name="checkout" class="button button--purple {% if settings.cart_terms_conditions_enable %}cart__checkout--page{% endif %}">
+                {{ 'cart.general.checkout' | t }}
+            </button>
+        </div>
+
+        <div class="cart__summary-payment">
+            <p class="cart__summary-secure"><span>{% render 'icon-lock'%}</span>{{ 'cart.general.secure' | t }}</p>
+            <ul class="cart__summary-list">
+                {%- for type in shop.enabled_payment_types -%}
+                    <li class="cart__summary-list-item">
+                        {{- type | payment_type_svg_tag: class:'cart__summary-list-icon' -}} 
+                    </li>
+                {%- endfor -%}
+            </ul>
+        </div>
+    </form>
+
+    {% assign carousel = section.settings.add_carousel%}
+    {% if section.blocks.size > 0  %}
+        <div class="cart__summary-related">
+            <div class="product-grid flexbox {{ carousel }}">
+                {% for block in section.blocks %}
+                    {%- render 'cart-item', item: block.settings.product_selection, class: 'summary'  -%}
+                {% endfor %}
+            </div>
+        </div>
+    {%- endif -%} 
+</div>

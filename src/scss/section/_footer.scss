@@ -1,0 +1,90 @@
+@import "./_settings/core";
+
+.site-footer {
+    background: $color-title;
+    overflow: hidden;
+
+    &__content {
+        display: flex;
+        row-gap: 2rem;
+        padding: 4rem 0;
+
+        @include mq($mq-desk, max) {
+            flex-wrap: wrap;
+        }
+
+        @include mq($mq-mob) {
+            justify-content: space-between;
+            margin: 0 -2rem;
+            padding: 6rem 0;
+        }
+    }
+
+    &__column {
+        width: 100%;
+
+        @include mq(($mq-mob, $mq-desk)) {
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        @include mq($mq-desk) {
+            min-width: 13rem;
+            padding: 0 2rem;
+        }
+
+        &-title {
+            color: $color-light;
+            @include font-size(14, 1.5);
+            text-transform: capitalize;
+            padding-bottom: 1rem;
+            letter-spacing: 0;
+        }
+    }
+
+    &__nav {
+        &-link {
+            color: $color-grey-2;
+            @include font-size(12, 2);
+
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+
+    &__payment {
+        display: flex;
+        align-items: center;
+        column-gap: 1.57rem;
+
+        &-text {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__bottom {
+        position: relative;
+        padding: 2rem 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            border-bottom: 0.1rem solid $color-border-footer;
+            left: -100%;
+            right: -100%;
+            top: 0;
+            opacity: 0.1;
+        }
+    }
+
+    &__copyright {
+        @include font-size(12, 1.7);
+        font-weight: 400;
+        text-align: center;
+
+        &-text {
+            color: $color-grey-2;
+        }
+    }
+}

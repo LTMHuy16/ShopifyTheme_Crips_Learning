@@ -1,0 +1,84 @@
+.container {
+    max-width: $max-width;
+
+    padding: {
+        left: $spacing;
+        right: $spacing;
+    }
+
+    @include mq($mq-desk-lrg) {
+        padding: {
+            left: $spacing-wide;
+            right: $spacing-wide;
+        }
+    }
+
+    margin: {
+        left: auto;
+        right: auto;
+    }
+
+    &--full {
+        max-width: 100%;
+
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    &--large {
+        max-width: $max-width-large;
+    }
+
+    &--toolbar {
+        @include mq($mq-tab, max) {
+            padding: 0;
+        }
+    }
+
+    &--featured {
+        @include mq($mq-desk, max) {
+            padding: 0;
+        }
+
+        @include mq($mq-desk) {
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: calc(-100% + 2rem);
+                z-index: 2;
+                background-color: $color-light;
+            }
+        }
+    }
+
+    &--cms {
+        max-width: $mq-desk;
+    }
+
+    &--medium {
+        padding-top: 4.8rem;
+        padding-bottom: 4.8rem;
+
+        @include mq($mq-desk) {
+            padding-top: 9.6rem;
+            padding-bottom: 9.6rem;
+            position: relative;
+
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 6rem;
+                right: 6rem;
+                border-bottom: 0.1rem solid $color-border-primary;
+            }
+        }
+    }
+}

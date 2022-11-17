@@ -1,0 +1,153 @@
+.flickity-enabled {
+  position: relative; }
+
+.flickity-enabled:focus {
+  outline: 0; }
+
+.flickity-enabled.is-draggable {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab; }
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: -webkit-grabbing;
+  cursor: grabbing; }
+
+.flickity-viewport {
+  overflow: hidden;
+  position: relative;
+  height: 100%; }
+
+.flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
+.flickity-button {
+  position: absolute;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  color: inherit;
+  min-width: unset;
+  cursor: pointer; }
+
+.flickity-button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.5rem #19f; }
+
+.flickity-button:active {
+  opacity: 0.6; }
+
+.flickity-button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+  pointer-events: none; }
+
+.flickity-button-icon {
+  fill: currentColor; }
+
+.flickity-prev-next-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  border: 0.1rem solid transparent; }
+
+.flickity-custom-btn--4 .flickity-prev-next-button {
+  top: 50%;
+  transform: translateY(-50%); }
+
+.flickity-custom-btn--4 .flickity-prev-next-button.previous {
+  left: 1rem; }
+
+@media screen and (min-width: 1440px) {
+  .flickity-custom-btn--4 .flickity-prev-next-button.previous {
+    left: -6rem; } }
+
+.flickity-custom-btn--4 .flickity-prev-next-button.next {
+  right: 1rem; }
+
+@media screen and (min-width: 1440px) {
+  .flickity-custom-btn--4 .flickity-prev-next-button.next {
+    right: -6rem; } }
+
+.flickity-custom-btn--3 .flickity-prev-next-button {
+  bottom: 0;
+  margin-top: 3rem; }
+
+.flickity-custom-btn--3 .flickity-prev-next-button.previous {
+  left: 50%;
+  transform: translate(-100%); }
+
+@media screen and (min-width: 960px) {
+  .flickity-custom-btn--3 .flickity-prev-next-button.previous {
+    left: 0.2rem;
+    transform: none; } }
+
+.flickity-custom-btn--3 .flickity-prev-next-button.next {
+  right: 50%;
+  transform: translate(100%); }
+
+@media screen and (min-width: 960px) {
+  .flickity-custom-btn--3 .flickity-prev-next-button.next {
+    right: unset;
+    left: 4.6rem;
+    transform: none; } }
+
+.flickity-custom-btn--5 .flickity-prev-next-button {
+  margin-top: 3rem; }
+
+.flickity-custom-btn--5 .flickity-prev-next-button.previous {
+  left: 50%;
+  transform: translate(-100%); }
+
+.flickity-custom-btn--5 .flickity-prev-next-button.next {
+  right: 50%;
+  transform: translate(100%); }
+
+.flickity-rtl .flickity-prev-next-button.previous {
+  left: auto;
+  right: 1rem; }
+
+.flickity-rtl .flickity-prev-next-button.next {
+  right: auto;
+  left: 1rem; }
+
+.flickity-rtl .flickity-page-dots {
+  direction: rtl; }
+
+.flickity-page-dots {
+  position: absolute;
+  width: 100%;
+  bottom: -2.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  line-height: 1; }
+
+.flickity-page-dots .dot {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.8rem;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0.25;
+  cursor: pointer; }
+
+.flickity-page-dots .dot.is-selected {
+  opacity: 1; }

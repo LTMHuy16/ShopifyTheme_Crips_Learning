@@ -1,0 +1,79 @@
+{% unless template.name == 'index' or template.name == 'cart' %}
+{{ 'component-breadcrumbs.css' | asset_url | stylesheet_tag }}
+<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs__inner h6">
+            <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}" class="breadcrumbs__home">{{ 'general.breadcrumbs.home' | t }}</a>
+
+            {% if template.name == 'product' %}
+                {% if collection %}
+                    <span class="breadcrumbs__divider" aria-hidden="true">
+                        <svg  width="4" height="6" viewBox="0 0 4 6" aria-hidden="true" focusable="false" role="presentation">
+                            <use href="#icon-select-arrow" />
+                        </svg>
+                    </span>
+                    {% if collection.handle %}
+                        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                        {{ collection.title | link_to: url }}
+                    {% endif %}
+                {% endif %}
+                <span class="breadcrumbs__divider" aria-hidden="true">
+                    <svg  width="4" height="6" viewBox="0 0 4 6" aria-hidden="true" focusable="false" role="presentation">
+                        <use href="#icon-select-arrow" />
+                    </svg>
+                </span>
+                <span class="breadcrumbs--truncate">{{ product.title }}</span>
+            {% elsif template.name == 'collection' and collection.handle %}
+                <span class="breadcrumbs__divider" aria-hidden="true">
+                    <svg  width="4" height="6" viewBox="0 0 4 6" aria-hidden="true" focusable="false" role="presentation">
+                        <use href="#icon-select-arrow" />
+                    </svg>
+                </span>
+            {% if current_tags %}
+                {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                {{ collection.title | link_to: url }}
+                <span class="breadcrumbs__divider" aria-hidden="true">/</span>
+                {% for tag in current_tags %}
+                    <span>{{ tag }}</span>
+                    {% unless forloop.last %}
+                        <span>+</span>
+                    {% endunless %}
+                {% endfor %}
+
+            {% else %}
+                <span>{{ collection.title }}</span>
+            {% endif %}
+            {% elsif template.name == 'blog' %}
+                <span class="breadcrumbs__divider" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" role="presentation">
+                        <use href="#icon-select-arrow" />
+                    </svg>
+                </span>
+
+                {% if current_tags %}
+                    {{ blog.title | link_to: blog.url }}
+                    <span class="breadcrumbs__divider" aria-hidden="true">
+                        <svg aria-hidden="true" focusable="false" role="presentation">
+                            <use href="#icon-select-arrow" />
+                        </svg>
+                    </span>
+                    <span>{{ current_tags | join: " + " }}</span>
+                {% else %}
+                    <span>{{ blog.title }}</span>
+                {% endif %}
+            {% elsif template.name == 'article' %}
+                <span class="breadcrumbs__divider" aria-hidden="true">/</span>
+                {{ blog.title | link_to: blog.url }}
+                <span class="breadcrumbs__divider" aria-hidden="true">/</span>
+                <span>{{ article.title }}</span>
+            {% elsif template.name == 'page' %}
+                <span class="breadcrumbs__divider" aria-hidden="true">/</span>
+                <span>{{ page.title }}</span>
+            {% else %}
+                <span class="breadcrumbs__divider" aria-hidden="true">/</span>
+                <span>{{ 'search.title' | t: terms: search.terms | escape  }}</span>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% endunless %}

@@ -1,0 +1,19 @@
+{%- assign footer_links = linklists[footer_links].links -%}
+
+{% if footer_links.size > 0 %}
+    {% for link in footer_links %}
+        <div class="site-footer__column{% if forloop.last %} site-footer__column--last{% endif%}">
+            <h6 class="site-footer__column-title {% if forloop.last %}site-footer__column-title--hide{% endif%}">{{ link.title }}</h6>
+            <ul class="site-footer__nav">
+                {%- assign column_links = link.links -%}
+                {% if column_links.size > 0 %}
+                    {% for sublink in column_links %}
+                        <li class="site-footer__nav-item">
+                            <a class="site-footer__nav-link" href="{{ sublink.url }}" title="{{ sublink.title }}">{{ sublink.title }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endif %}

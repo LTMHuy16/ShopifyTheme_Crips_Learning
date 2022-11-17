@@ -1,0 +1,298 @@
+{%-liquid
+-%}
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+{{ 'component-content.css' | asset_url | stylesheet_tag }}
+
+<div class="contact-us section-{{ section.id }}-padding">
+	<div class="container">
+        <div class="contact-us__header">
+            <h1 class="contact-us__title h2">{{ page.title }}</h1>
+        </div>
+		<div class="flexbox">
+			<div class="flexbox__item flexbox__item--3">
+				<div class="contact-us__info">
+					{%- for block in section.blocks -%}
+              {%- if block.type contains 'content' -%}
+                  <div class="contact-us__content">
+                      {%- render 'ob-content', block: block -%}
+                  </div>
+              {%- endif -%}
+          {%- endfor -%}
+				</div>
+			</div>
+			<div class="flexbox__item flexbox__item--large">
+                <span class="contact-us__form-text h4">{{ 'templates.contact.form.message_subtitle' | t }}</span>
+                {% form 'contact' %}
+                    <div class="contact-us__form">
+                        <div class="contact-us__field contact-us__field--50">
+							<label for="customerServices" class="select-label">
+								<select class="contact-us__select" name="contact[customer_service]" id="customerServices">
+									<option class="contact-us__option" value="Customer service" disabled>Customer service</option>
+									<option class="contact-us__option" value="Customer service">Customer service</option>
+									<option class="contact-us__option" value="Customer service">Customer service</option>
+									<option class="contact-us__option" value="Customer service">Customer service</option>
+									<option class="contact-us__option" value="Customer service">Customer service</option>
+									<option class="contact-us__option" value="Customer service">Customer service</option>
+								</select>
+							</label>
+                        </div>
+                        <div class="contact-us__field contact-us__field--50">
+                            <input type="text" placeholder="{{ 'templates.contact.form.name' | t }}" name="contact[name]" autocomplete="name" class="contact-us__input">
+                        </div>
+                        <div class="contact-us__field contact-us__field--50">
+                            <input type="email" placeholder="{{ 'templates.contact.form.email' | t }}" name="contact[email]" autocomplete="email" required class="contact-us__input">
+                        </div>
+                        <div class="contact-us__field contact-us__field--50">
+                            <input type="tel" placeholder="{{ 'templates.contact.form.phone' | t }}" name="contact[phone]" autocomplete="mobile" class="contact-us__input">
+                        </div>
+                        <div class="contact-us__field">
+                            <textarea class="contact-us__textarea" placeholder="{{ 'templates.contact.form.message' | t }}" name="contact[body]"></textarea>
+                        </div>
+                    </div>
+                    <div class="contact-us__submit">
+                        <button class="button contact-use__btn">{{ 'templates.contact.form.send' | t }}</button>
+                    </div>
+                {% endform %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+    {
+        "name": "t:sections.contact-form.name",
+        "tag": "section",
+        "class": "section",
+        "settings": [
+            {
+                "type": "range",
+                "id": "padding_top",
+                "label": "t:sections.all.padding.padding_top",
+                "min": 0,
+                "max": 120,
+                "default": 120,
+                "step": 4,
+                "unit": "px"
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "label": "t:sections.all.padding.padding_bottom",
+                "min": 0,
+                "max": 120,
+                "default": 48,
+                "step": 2,
+                "unit": "px"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "content-image",
+                "name": "t:sections.all.block_content.name",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "t:sections.all.block_content.header.content_settings"
+                    },
+                    {
+                        "type": "select",
+                        "id": "vertical",
+                        "label": "t:sections.all.block_content.vertical.label",
+                        "options": [
+                            { 
+                                "value": "top", 
+                                "label": "t:sections.all.block_content.vertical.options__1.label" 
+                            },
+                            { 
+                                "value": "middle", 
+                                "label": "t:sections.all.block_content.vertical.options__2.label" 
+                            },
+                            { 
+                                "value": "bottom", 
+                                "label": "t:sections.all.block_content.vertical.options__3.label"
+                            }
+                        ],
+                        "default": "middle",
+                        "info": "t:sections.all.block_content.vertical.info"
+                    },
+                    {
+                        "type": "select",
+                        "id": "horizontal",
+                        "label": "t:sections.all.block_content.vertical.label",
+                        "options": [
+                            {
+                                "value": "left", 
+                                "label": "t:sections.all.block_content.horizontal.options__1.label" 
+                            },
+                            { 
+                                "value": "center", 
+                                "label": "t:sections.all.block_content.horizontal.options__2.label" 
+                            },
+                            { 
+                                "value": "right", 
+                                "label": "t:sections.all.block_content.horizontal.options__3.label"
+                            }
+                        ],
+                        "default": "center",
+                        "info": "t:sections.all.block_content.horizontal.info"
+                    },
+                    {
+                        "type": "header",
+                        "content": "t:sections.all.block_content.header.content_settings"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_color",
+                        "label": "t:sections.all.block_content.content_color.label",
+                        "options": [
+                            { 
+                                "value": "text-light", 
+                                "label": "t:sections.all.block_content.content_color.options__1.label" 
+                            },
+                            { 
+                                "value": "text-dark", 
+                                "label": "t:sections.all.block_content.content_color.options__2.label" 
+                            }
+                        ],
+                        "default": "text-light"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "t:sections.all.block_content.title.label",
+                        "default": "Banner"
+                    },
+                    {
+                        "type": "select",
+                        "id": "title_size",
+                        "label": "t:sections.all.block_content.title.title_size",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" }
+                        ],
+                        "default": "h5"
+                    },
+                    {
+                        "type": "text",
+                        "id": "subtitle",
+                        "label": "t:sections.all.block_content.subtitle.label",
+                        "default": "Lorem ipsum dolor sit amet"
+                    },
+                    {
+                        "type": "select",
+                        "id": "subtitle_size",
+                        "label": "t:sections.all.block_content.subtitle.subtitle_size",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" }
+                        ],
+                        "default": "h5"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "t:sections.all.block_content.body.label",
+                        "default": "Lorem ipsum dolor sit amet"
+                    },
+                    {
+                        "type": "select",
+                        "id": "body_size",
+                        "label": "t:sections.all.block_content.body.body_size",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" }
+                        ],
+                        "default": "h7"
+                    },
+                    {
+                        "type": "text",
+                        "id": "cta_text",
+                        "label": "t:sections.all.block_content.cta.text",
+                        "default": "Shop Now"
+                    },
+                    {
+                        "type": "select",
+                        "id": "cta_style",
+                        "label": "t:sections.all.block_content.cta.style.label",
+                        "options": [
+                            { 
+                                "value": "", 
+                                "label": "t:sections.all.block_content.cta.style.options_1" 
+                            },
+                            { 
+                                "value": "solid-black", 
+                                "label": "t:sections.all.block_content.cta.style.options_2" 
+                            },
+                            { 
+                                "value": "purple", 
+                                "label": "t:sections.all.block_content.cta.style.options_3" 
+                            },
+                            { 
+                                "value": "solid-purple", 
+                                "label": "t:sections.all.block_content.cta.style.options_4" 
+                            },
+                            { 
+                                "value": "blue", 
+                                "label": "t:sections.all.block_content.cta.style.options_5" 
+                            },
+                            { 
+                                "value": "solid-blue", 
+                                "label": "t:sections.all.block_content.cta.style.options_6" 
+                            },
+                            { 
+                                "value": "red", 
+                                "label": "t:sections.all.block_content.cta.style.options_7" 
+                            },
+                            { 
+                                "value": "solid-red", 
+                                "label": "t:sections.all.block_content.cta.style.options_8" 
+                            }
+                        ],
+                        "default": ""
+                    },
+                    {
+                        "type": "url",
+                        "id": "cta_link",
+                        "label": "t:sections.all.block_content.cta.link"
+                    }                     
+                ]
+            }
+        ],
+        "presets": [
+            {
+            "name": "t:sections.contact-form.presets.name"
+            }
+        ]
+    }
+{% endschema %}

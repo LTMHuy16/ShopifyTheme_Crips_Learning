@@ -1,0 +1,71 @@
+//Layout
+$max-width: 126rem; // 1560px
+$max-width-large: 1560px;
+$max-width-small: 114rem; // 1140rem
+$spacing: 2.4rem; // 20px
+$spacing-wide: 6rem; // 60px
+
+//Font Family
+
+$font-title: "Poppins", sans-serif;
+$font-body: "Poppins", sans-serif;
+$font-title-weight: var(--font-title-weight);
+$font-body-weight: var(--font-body-weight);
+$font-medium-weight: var(--font-medium-weight);
+$font-icon: icomoon;
+
+//Colour
+$color-primary: #af5071;
+$theme-color: var(--theme-color);
+$color-dark: var(--color-dark);
+$color-light: var(--color-light);
+$color-title: var(--color-title);
+$color-body: var(--color-body);
+$color-button: $color-primary;
+$color-button-text: $color-light;
+$color-button-border: $color-primary;
+$color-input: $color-light;
+$color-input-text: $color-body;
+$color-border-secondary: #d7d7d7;
+$color-border-primary: #eee9ef;
+$color-border-input: #dcd9de;
+$color-border-section: #e8e8e8;
+$color-border-sizes: #fcdfc6;
+$color-border-footer: #ebe4ec;
+$color-dark1: #444444;
+$color-error: #cf142b;
+$color-pink: #ffd7de;
+$color-orange: #ff7e20;
+$color-cream: #fff5ee;
+$color-blue: #1a72f6;
+$color-light-blue: #eef9ff;
+$color-green: #72b41f;
+$color-light-green: #e7edd9;
+$color-purple: #9f16a1;
+$color-light-purple: #f9edff;
+$color-grey: #b0aeb1;
+$color-grey-2: #88858a;
+$color-grey-3: #545156;
+$color-bg-grey: #f6f6f7;
+
+$color-dark-rgb: var(--color-dark-rgb);
+$color-light-rgb: var(--color-light-rgb);
+$color-brand-rgb: var(--color-brand-rgb);
+$color-highlight-rgb: var(--color-highlight-rgb);
+
+//Breakingpoints
+$mq-mob: 480px;
+$mq-mob-small: 420px;
+$mq-mob-med: 560px;
+$mq-mob-lrg: 640px;
+$mq-tab: 768px;
+$mq-tab-sml: 820px;
+$mq-tab-med: 880px;
+$mq-tab-lrg: 920px;
+$mq-desk: 960px;
+$mq-desk-sml: 1024px;
+$mq-desk-med: 1280px;
+$mq-desk-lrg: 1440px;
+
+// Animation
+$easing: cubic-bezier(0.645, 0.045, 0.355, 1);

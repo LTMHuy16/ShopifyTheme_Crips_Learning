@@ -1,0 +1,22 @@
+{%- render 'product-options' -%}
+
+<div class="pdp__qty">
+    <label class="pdp__qty-label">{{ 'products.product.quantity' | t }}</label>
+    <input class="pdp__qty-num" min="1" type="number" id="quantity" name="quantity" value="1" />
+</div>
+
+<div class="pdp__buttons">
+    <button type="submit" class="button button--medium pdp__button pdp__button--addtocart js-product-form-submit">
+        <span class="pdp__addtocart-text pdp__addtocart-text--add"> {{ 'products.product.add_to_cart' | t }}</span>
+        <span class="pdp__addtocart-text pdp__addtocart-text--adding"> {{ 'products.product.adding_to_cart' | t }}</span>
+        <span class="pdp__addtocart-text pdp__addtocart-text--added"> {{ 'products.product.added_to_cart' | t }}</span>
+    </button>
+    <button type="button" class="button button--medium button--secondary pdp__button pdp__button--buynow">{{ 'products.product.quick_add' | t }}</button>
+</div>
+
+<script>
+    window.product = {
+        variants: {{ product.variants | json }},
+        selectedValues: new Array({{ product.options.size }}).fill(null),
+    };
+</script>

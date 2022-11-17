@@ -1,0 +1,8 @@
+development:
+  password: shptka_ddd95285354dc9510b09c09243106f61
+  theme_id: "136404107520"
+  store: cripslearning.myshopify.com
+  ignore_files:
+  - assets/css/
+  - assets/src/
+  - assets/all.js

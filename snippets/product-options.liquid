@@ -1,0 +1,91 @@
+{%- if product.options_with_values.size > 0 and product.options_with_values[0].name != 'Title' -%}
+{{ 'component-product-options.css' | asset_url | stylesheet_tag }}
+<div class="pdp__options js-product-options">
+    {%- for product_option in product.options_with_values -%}
+        {%- assign option_index = forloop.index0 -%}
+        {%- assign option_name = product_option.name | downcase -%}
+        {%- assign value_color_first = product_option.values[0] -%}
+
+        {% if option_name contains 'color' or option_name contains 'colour' %}
+            <div class="pdp__select pdp__select--color js-variant-row js-variant-row--color" data-index="{{ option_index }}">
+                <label class="pdp__select-label pdp__select-label--color">
+                    {{ product_option.name }}
+                </label>
+
+                <div class="pdp__select-wrap">
+                    {%- for value in product_option.values -%}
+                        <label class="pdp__select-item pdp__select-item--color" for="product-option-{{ option_index }}-{{ value | handle }}">
+                            <input class="pdp__select-field pdp__select-field--color js-product-variant" 
+                                    type="radio" 
+                                    name="product-option-{{ option_index }}" 
+                                    value="{{ value  }}" 
+                                    data-color="{{ value | handle }}"
+                                    id="product-option-{{ option_index }}-{{ value | handle }}"  
+                                    data-option="{{ option_index }}"
+                                    {% if value_color_first == value %}checked{% endif %}
+                            />
+                            <span class="pdp__select-value pdp__select-value--color {{ value | handle | prepend: 'swatches-' }}">{{ value }}</span>
+                        </label>
+                    {%- endfor -%}
+                </div>
+            </div>
+        {% else %}
+            <div class="pdp__select js-variant-row" data-index="{{ option_index }}">
+                <label class="pdp__select-label">
+                    {{ product_option.name }}
+                    <span class="pdp__select-label-value js-label-value"></span>
+                </label>
+
+                {%- if product_option.name contains "Size" -%}
+                    <div class="pdp__select-sizeguide js-sizeguide-modal">
+                        <div class="pdp__select-sizeguide-overlay js-sizeguide-overlay">overlay</div>
+                        <div class="pdp__select-sizeguide-inner">
+                            <div class="pdp__select-sizeguide-header">
+                                <h4 class="pdp__select-sizeguide-header-title">{{"products.product.size_guide" | t}}</h4>
+                                <span class="pdp__select-sizeguide-close js-sizeguide-close">
+                                    <svg focusable="false" role="presentation" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use href="#icon-close" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="pdp__select-sizeguide-body">
+                                {{ pages["size-guide"].content}}
+                            </div>
+                        </div>
+                    </div>
+                {%-endif-%}
+
+                <div class="pdp__select-values">
+                    {%- for value in product_option.values -%}
+                        <label class="pdp__select-item pdp__select-item--options" for="product-option-{{ option_index }}-{{ value | handle }}">
+                            <input class="pdp__select-field js-product-variant" 
+                                    type="radio" 
+                                    name="product-option-{{ option_index }}" 
+                                    value="{{ value | replace: '"', '*' }}" 
+                                    id="product-option-{{ option_index }}-{{ value | handle }}"  
+                                    data-option="{{ option_index }}" 
+                                    {% if value_color_first == value %}checked{% endif %}
+                            />
+                            <span class="pdp__select-value">{{ value }}</span>
+                        </label>
+                    {%- endfor -%}
+
+                    {%- if product_option.name contains "Size" and pages["size-guide"].content != blank -%}
+                        <span class="pdp__select-label-guide js-sizeguide-trigger h5">{{"products.product.size_guide" | t}}</span>
+                    {%-endif-%}
+                </div>
+            </div>
+        {% endif %}
+    {%- endfor -%}
+
+    <select name="id" id="product-select" class="no-js  js-product-select" hidden>
+        <option value="">Please Select</option>
+        {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if variant.available == false %}disabled="disabled"{% endif %}>
+                {{ variant.title }}
+            </option>
+        {% endfor %}
+    </select>
+
+</div>
+{%- endif -%}

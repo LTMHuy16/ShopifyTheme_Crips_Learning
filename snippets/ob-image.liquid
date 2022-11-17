@@ -1,0 +1,105 @@
+{%- liquid
+    assign image = block.settings.image
+    assign image_mobile = block.settings.image_mobile
+    assign image_alt = block.settings.image_alt
+    assign image_link = block.settings.image_link
+    assign image_size = image_size | split: ','
+    assign image_large = image_size[0]
+    assign image_wide = image_size[1]
+    assign image_medium = image_size[2]
+    assign image_small = image_size[3]
+-%}  
+  
+<div class="image">
+    {% if image_link != blank %}<a class="link" href="{{ image_link }}">{% endif %}	
+        <picture class="image__pic">
+            <!--Large-->        
+            {%- liquid
+                assign image_w = image.width
+                assign image_h = image.height
+                assign size_w = image_large | split: 'x' | first 
+                assign size_h = image_large | split: 'x' | last 
+            -%}    
+                
+            {%- if image_w >= 2560 -%}
+                {%- assign size = '2560x' -%}
+                <source media="(min-width: 1921px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {%- elsif image_w >= 1920 -%}
+                {%- assign size = '1920x' | append: size_h -%}
+                <source media="(min-width: 1681px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {%- elsif image_w >= 1680 -%}
+                {%- assign size = '1680x' | append: size_h -%}
+                <source media="(min-width: 1481px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {%- elsif image_w >= 1280 -%}
+                {%- assign size = '1280x' | append: size_h -%}
+                <source media="(min-width: 1025px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {% else %}
+                <source media="(min-width: 1025px)" srcset="{{ image | img_url: image_large, 'center' }}">
+            {%- endif -%}  
+
+            <!--Wide-->
+            {%- liquid
+                assign size_w = image_wide | split: 'x' | first
+                assign size_h = image_wide | split: 'x' | last 
+                assign size_ratio = size_w  | times: 1.0 | divided_by: size_h
+            -%}    
+
+            {%- if image_w >= 1024 -%}
+                {%- assign size_h = 1024 | divided_by: size_ratio -%}
+                {%- assign size = '1024x' | append: size_h -%}
+                <source media="(min-width: 961px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {% else %}
+                <source media="(min-width: 961px)" srcset="{{ image | img_url: image_wide, crop: 'center' }}">
+            {%- endif -%}      
+
+            <!--Medium-->
+            {%- liquid
+                assign size_w = image_medium | split: 'x' | first 
+                assign size_h = image_medium | split: 'x' | last 
+                assign size_ratio = size_w  | times: 1.0 | divided_by: size_h
+            -%}      
+
+            {%- if image_w >= 960 -%}
+                {%- assign size_h = 960 | divided_by: size_ratio -%}
+                {%- assign size = '960x' | append: size_h -%}
+                <source media="(min-width: 861px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {% else %}
+                <source media="(min-width: 861px)" srcset="{{ image | img_url: image_medium, crop: 'center' }}">
+            {%- endif -%}
+
+            <!--Small-->
+            {%- liquid
+                assign image_mobile_url = image_mobile | img_url: 'master'
+
+                unless image_mobile_url contains 'no-image' and image_mobile_url contains '.gif'
+                    assign image = image_mobile
+                endunless
+
+                assign image_w = image.width
+                assign image_h = image.height
+
+                assign size_w = image_small | split: 'x' | first 
+                assign size_h = image_small | split: 'x' | last 
+                assign size_ratio = size_w  | times: 1.0 | divided_by: size_h
+            -%}  
+            
+            {%- if image_w >= 860 -%}
+                {%- assign size_h = 860 | divided_by: size_ratio -%}
+                {%- assign size = '860x' | append: size_h -%}
+                <source media="(min-width: 769px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {%- elsif image_w >= 768 -%}
+                {%- assign size_h = 768 | divided_by: size_ratio -%}
+                {%- assign size = '768x' | append: size_h -%}
+                <source media="(min-width: 481px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {%- elsif image_w >= 480 -%}
+                {%- assign size_h = 480 | divided_by: size_ratio -%}
+                {%- assign size = '480x' | append: size_h -%}
+                <source media="(min-width: 375px)" srcset="{{ image | img_url: size, crop: 'center' }}">
+            {% else %}
+                <source media="(min-width: 375px)" srcset="{{ image | img_url: image_small, crop: 'center' }}">
+            {%- endif -%}
+            <source srcset="{{ image | img_url: image_small, crop: 'center' }}">
+            <img class="image__img" src="{{ image | img_url: 'master' }}" alt="{{ image_alt }}" />
+        </picture>
+    {% if image_link != blank %}</a>{% endif %}
+</div>

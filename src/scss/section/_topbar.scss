@@ -1,0 +1,14 @@
+@import "./_settings/core";
+
+.site-topbar {
+    background-color: $theme-color;
+    
+    &__currency {
+        margin-left: -1.2rem;
+    }
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

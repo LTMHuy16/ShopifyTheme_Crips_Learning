@@ -1,0 +1,60 @@
+{{ "section-cart.css" | asset_url | stylesheet_tag }}
+{{ 'component-product-grid.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-collection.css' | asset_url | stylesheet_tag }}
+<div class="cart__wrapper">
+    <div class="container">
+        {% if cart.item_count > 0 %}
+            <div class="cart">
+                <div class="cart__items">
+                    <div class="cart__inner">
+                        {% for item in cart.items %} 
+                            {%- render 'cart-item', item: item, index: forloop.index -%} 
+                        {% endfor %}
+                    </div>
+                </div>
+                {%- render 'cart-summary', section: section -%}
+            </div>
+        {% else %}
+            <header class="cart__emty">
+                <h2 class="h4 cart__emty-title">{{ "cart.general.empty" | t }}</h2>
+                <a href="/collections/all" class="button button--medium button--purple">{{ "cart.general.continue_shopping" | t }}</a>
+            </header>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Main Cart",
+        "settings": [
+            {
+                "type": "select",
+                "id": "add_carousel",
+                "label": "Add carousel?",
+                "options": [
+                    { "value": "owl-carousel", "label": "Yes" },
+                    { "value": "", "label": "No" }
+                ],
+                "default": "owl-carousel"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "product",
+                "name": "Related Product",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Image"
+                    },
+                    {
+                        "type": "product",
+                        "id": "product_selection",
+                        "label": "Product"
+                    }
+                   
+                ]
+            }
+        ]
+    }
+{% endschema %}

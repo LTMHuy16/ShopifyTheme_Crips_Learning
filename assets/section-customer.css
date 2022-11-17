@@ -1,0 +1,76 @@
+.customer__title {
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-bottom: 3rem;
+  text-transform: capitalize; }
+
+.customer__account {
+  padding: 6rem 0; }
+
+.customer__account-inner {
+  display: flex;
+  margin: 0 -3rem; }
+
+.customer__account-item {
+  width: 50%;
+  padding: 0 3rem; }
+
+.customer__field {
+  color: #545156;
+  padding-bottom: 3rem;
+  position: relative; }
+
+.customer__field-label {
+  display: block;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-bottom: 1rem; }
+
+.customer__field-input {
+  padding: 1rem 1.5rem;
+  border: 1px solid #eee9ef;
+  width: 100%; }
+
+.customer__field-input::placeholder {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-transform: capitalize; }
+
+.customer__forgot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  letter-spacing: 0em;
+  text-align: right;
+  text-decoration: underline;
+  color: #545156; }
+
+.customer__form-buttons {
+  display: flex;
+  align-items: center; }
+
+.customer__form-button--register {
+  color: #545156;
+  font-size: 13px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin-left: auto;
+  text-decoration: underline; }
+
+.customer__reset-text {
+  padding-bottom: 1.6rem; }

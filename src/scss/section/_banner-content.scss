@@ -1,0 +1,65 @@
+@import "./_settings/core";
+
+.banner-content {
+    &__inner {
+        max-width: 114rem;
+        margin: 0 auto;
+
+        @include mq(($mq-mob-med, $mq-desk)) {
+            margin: 0 -1rem;
+        }
+    }
+
+    &__image {
+        @include mq(($mq-mob-med, $mq-desk)) {
+            padding: 0 1rem;
+        }
+
+        &--small {
+            @include mq(($mq-mob-med, $mq-desk)) {
+                width: 66.6666%;
+            }
+        }
+
+        &--large {
+            margin-bottom: 2rem;
+
+            @include mq(($mq-mob-med, $mq-desk)) {
+                width: 33.3333%;
+            }
+
+            @include mq($mq-mob-med) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__text {
+        margin-bottom: 3rem;
+
+        @include mq($mq-desk) {
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 2.6rem;
+            max-width: 50rem;
+            margin: 0 auto;
+
+            @include mq($mq-desk) {
+                max-width: unset;
+            }
+
+            li {
+                &:not(:last-child) {
+                    margin-bottom: 1.5rem;
+
+                    @include mq($mq-desk) {
+                        margin-bottom: 2.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

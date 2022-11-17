@@ -1,0 +1,284 @@
+{%- liquid
+    assign order_img = section.settings.order_img
+    assign background_image = section.settings.background_image | img_url: 'master'
+    assign section_style = 'style="'
+    assign order_img_class = ''
+
+    unless background_image contains 'no-image'
+        assign background_image = "background-image: url(image_url);" | replace: 'image_url', background_image
+        assign section_style = section_style | append: background_image
+    endunless
+
+    assign section_style = section_style | append: '"'
+
+    if order_img == 2
+        assign order_img_class = 'flexbox--reverse'
+    endif
+
+-%}
+
+{{ 'component-newletter-modal.css' | asset_url | stylesheet_tag }}
+
+{%- form 'customer', product, class: 'newletter-form js-newletter-form' -%}
+    {%- if form.posted_successfully? -%}
+        <div class="hide js-newletter-success"></div>
+    {%- endif -%}
+    <div class="newletter-form__inner js-newletter-form-inner">
+        <div class="newletter-form__close js-newletter-close">
+            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <use href="#icon-close" />
+            </svg>
+        </div>
+        <div class="newletter-form__banner" {{ section_style }}>banner</div>
+        <div class="newletter-form__content text-center">
+            {%- for block in section.blocks -%}
+                {%- if block.type contains 'content' -%}
+                    {%- render 'ob-content', block: block, button_class: 'button button--banner' -%}
+                {%- elsif block.type contains 'customer_form' -%}
+                    <div class="newletter-form__form">
+                        <div class="newletter-form__input">
+                            <input class="input input--small" type="email" name="contact[email]" placeholder="{{ 'general.discount_modal.input_text' | t }}"/>
+                        </div>
+                        <div class="newletter-form__submit">
+                            <button class="newletter-form__button button button--full" type="submit">{{ 'general.discount_modal.submit_text' | t }}</button>
+                        </div>
+                        <p class="newletter-form__commit text-center">{{ 'general.discount_modal.commit_text' | t }}</p>
+                    </div>  
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+    </div>
+{%- endform -%}
+
+{{ 'newletter.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+    "name": "t:sections.newletter_modal.name",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "t:sections.all.block_content.image.header"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "t:sections.all.block_content.image.primary"
+        },
+        {
+            "type": "select",
+            "id": "order_img",
+            "label": "t:sections.all.order_img.label",
+            "options": [
+                {
+                    "value": "1",
+                    "label": "t:sections.all.order_img.options__1.label"
+                },
+                {
+                    "value": "2",
+                    "label": "t:sections.all.order_img.options__2.label"
+                }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "type": "content",
+            "name": "t:sections.all.block_content.name",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "t:sections.all.block_content.header.content_settings"
+                },
+                {
+                    "type": "select",
+                    "id": "vertical",
+                    "label": "t:sections.all.block_content.vertical.label",
+                    "options": [
+                        { 
+                            "value": "top", 
+                            "label": "t:sections.all.block_content.vertical.options__1.label" 
+                        },
+                        { 
+                            "value": "middle", 
+                            "label": "t:sections.all.block_content.vertical.options__2.label" 
+                        },
+                        { 
+                            "value": "bottom", 
+                            "label": "t:sections.all.block_content.vertical.options__3.label"
+                        }
+                    ],
+                    "default": "middle",
+                    "info": "t:sections.all.block_content.vertical.info"
+                },
+                {
+                    "type": "select",
+                    "id": "horizontal",
+                    "label": "t:sections.all.block_content.vertical.label",
+                    "options": [
+                        {
+                            "value": "left", 
+                            "label": "t:sections.all.block_content.horizontal.options__1.label" 
+                        },
+                        { 
+                            "value": "center", 
+                            "label": "t:sections.all.block_content.horizontal.options__2.label" 
+                        },
+                        { 
+                            "value": "right", 
+                            "label": "t:sections.all.block_content.horizontal.options__3.label"
+                        }
+                    ],
+                    "default": "center",
+                    "info": "t:sections.all.block_content.horizontal.info"
+                },
+                {
+                    "type": "header",
+                    "content": "t:sections.all.block_content.header.content_settings"
+                },
+                {
+                    "type": "select",
+                    "id": "content_color",
+                    "label": "t:sections.all.block_content.content_color.label",
+                    "options": [
+                        { 
+                            "value": "text-light", 
+                            "label": "t:sections.all.block_content.content_color.options__1.label" 
+                        },
+                        { 
+                            "value": "text-dark", 
+                            "label": "t:sections.all.block_content.content_color.options__2.label" 
+                        }
+                    ],
+                    "default": "text-light"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "t:sections.all.block_content.title.label",
+                    "default": "Banner"
+                },
+                {
+                    "type": "select",
+                    "id": "title_size",
+                    "label": "t:sections.all.block_content.title.title_size",
+                    "options": [
+                        { "value": "h1", "label": "H1" },
+                        { "value": "h2", "label": "H2" },
+                        { "value": "h3", "label": "H3" },
+                        { "value": "h4", "label": "H4" },
+                        { "value": "h5", "label": "H5" },
+                        { "value": "h6", "label": "H6" },
+                        { "value": "h7", "label": "H7" }
+                    ],
+                    "default": "h3"
+                },
+                {
+                    "type": "text",
+                    "id": "subtitle",
+                    "label": "t:sections.all.block_content.subtitle.label",
+                    "default": "Lorem ipsum dolor sit amet"
+                },
+                {
+                    "type": "select",
+                    "id": "subtitle_size",
+                    "label": "t:sections.all.block_content.subtitle.subtitle_size",
+                    "options": [
+                        { "value": "h1", "label": "H1" },
+                        { "value": "h2", "label": "H2" },
+                        { "value": "h3", "label": "H3" },
+                        { "value": "h4", "label": "H4" },
+                        { "value": "h5", "label": "H5" },
+                        { "value": "h6", "label": "H6" },
+                        { "value": "h7", "label": "H7" }
+                    ],
+                    "default": "h5"
+                },
+                {
+                    "type": "textarea",
+                    "id": "body",
+                    "label": "t:sections.all.block_content.body.label",
+                    "default": "Lorem ipsum dolor sit amet"
+                },
+                {
+                    "type": "select",
+                    "id": "body_size",
+                    "label": "t:sections.all.block_content.body.body_size",
+                    "options": [
+                        { "value": "h1", "label": "H1" },
+                        { "value": "h2", "label": "H2" },
+                        { "value": "h3", "label": "H3" },
+                        { "value": "h4", "label": "H4" },
+                        { "value": "h5", "label": "H5" },
+                        { "value": "h6", "label": "H6" },
+                        { "value": "h7", "label": "H7" }
+                    ],
+                    "default": "h7"
+                },
+                {
+                    "type": "text",
+                    "id": "cta_text",
+                    "label": "t:sections.all.block_content.cta.text",
+                    "default": "Shop Now"
+                },
+                {
+                    "type": "select",
+                    "id": "cta_style",
+                    "label": "t:sections.all.block_content.cta.style.label",
+                    "options": [
+                        { 
+                            "value": "", 
+                            "label": "t:sections.all.block_content.cta.style.options_1" 
+                        },
+                        { 
+                            "value": "solid-black", 
+                            "label": "t:sections.all.block_content.cta.style.options_2" 
+                        },
+                        { 
+                            "value": "purple", 
+                            "label": "t:sections.all.block_content.cta.style.options_3" 
+                        },
+                        { 
+                            "value": "solid-purple", 
+                            "label": "t:sections.all.block_content.cta.style.options_4" 
+                        },
+                        { 
+                            "value": "blue", 
+                            "label": "t:sections.all.block_content.cta.style.options_5" 
+                        },
+                        { 
+                            "value": "solid-blue", 
+                            "label": "t:sections.all.block_content.cta.style.options_6" 
+                        },
+                        { 
+                            "value": "red", 
+                            "label": "t:sections.all.block_content.cta.style.options_7" 
+                        },
+                        { 
+                            "value": "solid-red", 
+                            "label": "t:sections.all.block_content.cta.style.options_8" 
+                        }
+                    ],
+                    "default": ""
+                },
+                {
+                    "type": "url",
+                    "id": "cta_link",
+                    "label": "t:sections.all.block_content.cta.link"
+                }                      
+            ]
+        },
+        {
+            "type": "customer_form",
+            "name": "t:sections.newletter_modal.blocks.form.name",
+            "limit": 1
+        }
+    ],
+    "presets": [{
+        "name": "t:sections.banner_content.name",
+        "blocks": [
+        ]
+    }]
+}
+{% endschema %}

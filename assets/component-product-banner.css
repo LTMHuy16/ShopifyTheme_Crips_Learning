@@ -1,0 +1,59 @@
+.pdp__banner {
+  margin-top: 2.4rem;
+  width: 100%; }
+
+@media screen and (min-width: 960px) {
+  .pdp__banner {
+    margin-top: 1.6rem;
+    width: calc(64.2% - 2rem);
+    padding: 0 1rem; } }
+
+.pdp__banner-inner {
+  max-width: 85.6rem; }
+
+.pdp__banner-row {
+  background-color: #88858a;
+  margin-bottom: 1.6rem;
+  padding: 1.6rem; }
+
+.pdp__banner-row:last-child {
+  margin: 0; }
+
+@media screen and (min-width: 960px) {
+  .pdp__banner-row {
+    display: flex;
+    padding: 2.8rem 3rem; } }
+
+.pdp__banner-title {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.2rem;
+  font-size: 16px;
+  font-size: 1.6rem; }
+
+@media screen and (min-width: 960px) {
+  .pdp__banner-title {
+    padding: 0 1.6rem 0 0;
+    font-size: 18px;
+    font-size: 1.8rem;
+    max-width: 32.8rem; } }
+
+.pdp__banner-logo {
+  min-width: 2.7rem;
+  margin-right: 1.8rem; }
+
+@media screen and (min-width: 960px) {
+  .pdp__banner-logo {
+    margin-right: 3.2rem; } }
+
+.pdp__banner-body {
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #444; }
+
+@media screen and (min-width: 960px) {
+  .pdp__banner-body {
+    padding-left: 1.6rem;
+    max-width: 37.6rem;
+    margin-right: auto; } }

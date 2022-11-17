@@ -1,0 +1,125 @@
+{%- liquid
+	assign columns_desktop = section.settings.columns_desktop
+	assign columns_mobile = section.settings.columns_mobile
+	assign product_class = 'collection__product'
+
+	assign rows = 4
+	assign limit = columns_desktop | times: rows
+-%}
+
+{{ 'section-collection.css' | asset_url |stylesheet_tag }}
+{{ 'component-product-grid.css' | asset_url |stylesheet_tag }}
+
+<div class="collection">
+	<div class="container">
+		<div class="flexbox">
+			<div class="collection__filters flexbox__item flexbox__item--4">
+				<h1 class="title title--primary h4">{{ section.settings.title | escape }}</h1>
+			</div>
+			<div class="collection__content flexbox__item">
+				<div class="collection__inner">
+					<div class="collection__controls">
+						
+					</div>
+					<div class="collection__list product-grid text-center ">
+						{% for collection in collections %}
+							{% render 'card-collection', card_collection: collection, columns: columns_desktop %}
+						{%- else -%}
+							<p class="collection__empty">{{ 'sections.collection_list.empty' | t }}</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-list-collections.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.main-list-collections.settings.title.label",
+      "default": "Collections"
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "options": [
+        {
+          "value": "alphabetical",
+          "label": "t:sections.main-list-collections.settings.sort.options__1.label"
+        },
+        {
+          "value": "alphabetical_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__2.label"
+        },
+        {
+          "value": "date_reversed",
+          "label": "t:sections.main-list-collections.settings.sort.options__3.label"
+        },
+        {
+          "value": "date",
+          "label": "t:sections.main-list-collections.settings.sort.options__4.label"
+        },
+        {
+          "value": "products_high",
+          "label": "t:sections.main-list-collections.settings.sort.options__5.label"
+        },
+        {
+          "value": "products_low",
+          "label": "t:sections.main-list-collections.settings.sort.options__6.label"
+        }
+      ],
+      "default": "alphabetical",
+      "label": "t:sections.main-list-collections.settings.sort.label"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-list-collections.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-list-collections.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-list-collections.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-list-collections.settings.image_ratio.label",
+      "info": "t:sections.main-list-collections.settings.image_ratio.info"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.main-list-collections.settings.columns_desktop.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-list-collections.settings.header_mobile.content"
+    },
+	{
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1,
+      "label": "t:sections.main-list-collections.settings.columns_mobile.label"
+    }
+  ]
+}
+{% endschema %}

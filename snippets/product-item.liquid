@@ -1,0 +1,75 @@
+{%- comment -%} 
+    show_secondary_image
+
+{%- endcomment -%}
+{%- liquid
+    unless columns 
+        assign columns = 4
+    endunless
+
+    assign product_title = 'Product Title'
+    assign product_url = '#'
+    assign product_featured_image = '' 
+    assign product_second_image = '' 
+    assign product_price = 100
+    assign product_compare_at_price = 120
+
+    if product 
+        assign product_title = product.title
+        assign product_url = product.url | within: collection
+        assign product_featured_image = product.featured_image 
+        assign product_second_image = product.images[1]
+        assign product_price = product.price
+        assign product_compare_at_price = product.compare_at_price
+    endif    
+-%}
+
+<div class="product-item product-grid__item {{ class }} flexbox__item flexbox__item--{{ columns }}" data-id="{{ product.id }}">    
+    <div class="product-item__image image-ratio">
+        <a href="{{ product_url }}" class="product-item__link">
+            {% if product_compare_at_price > price %}
+                <div class="product-item__badges">
+                    <span class="product-item__badge">Sale</span>
+                </div>
+            {% endif %}
+            <picture class="product-item__image-pic--feature image-ratio__pic image-ratio__pic--product-item">
+                <img class="image-ratio__img" src="{{ product_featured_image | img_url: '480x' }}" width="{{ product_featured_image.width }}" height="{{ product_featured_image.height }}" alt="{{ product_title.alt }}"/>
+            </picture>
+
+            {%- if product_second_image != blank and show_secondary_image -%}
+                <picture class="product-item__image-pic--hover image-ratio__pic image-ratio__pic--product-item">
+                    <img class="image-ratio__img" src="{{ product_second_image | img_url: '480x' }}" width="{{ product_second_image.width }}" height="{{ product_second_image.height }}" alt="{{ product_title.alt }}"/>
+                </picture>
+            {%- endif -%}
+        </a>
+    </div>
+    <div class="product-item__caption">
+        <div class="product-item__caption-row h5">
+            <a class="product-item__name" itemprop="name" href="{{ product_url }}" title="{{ product_title }}">{{ product_title }}</a>
+            <div class="product-item__prices text-500" itemprop="name">
+                {% if product_compare_at_price > price %}
+                    <span class="product-item__prices-compare">{{ product_price | money }}</span>
+                {% endif %}
+                <span class="product-item__prices-price">{{ product_compare_at_price | money }}</span>
+            </div>
+        </div>
+
+        {% for option in product.options_with_values %}
+            {%- assign option_name = option.name | downcase -%}
+            {% if option_name contains 'color' or option_name contains 'colour' %}
+                {%- assign option_index = forloop.index0 -%}
+                {%- assign values = '' -%}
+                <ul class="product-item__colors">
+                    {% for variant in product.variants %}
+                    {%- assign value = variant.options[option_index] %}
+                        {% unless values contains value %}
+                            <li class="product-item__color swatches-{{ value | downcase }} color-swatch">
+                                <a href="{{ variant.url }}" class="product-item__link">{{ value }}</a>
+                            </li>
+                        {% endunless %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

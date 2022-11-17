@@ -1,0 +1,38 @@
+{{ 'component-product-photos.css' | asset_url | stylesheet_tag }}
+
+<div class="{{ class }}">
+    {% if product.media.size > 0 %}
+        {% assign media_size_large = '504x756' %}
+        {% assign media_size_medium = '420x630' %}
+        {% assign media_size_small = '300x400' %}
+        {% for media in product.media %}
+            {%- if media.alt contains 'colour' -%}
+                {% assign color = media.alt | replace: 'colour_', '' %}
+            {%- endif -%}
+            <div class="pdp__photos-item js-pdp-photo-item" data-color="{{ color | handle }}" data-index="{{ forloop.index0 }}">
+                <div class="image-ratio image-ratio__product" title="{{ product.title | escape }}" data-media-id="{{ media.id }}">
+                    {% case media.media_type %}
+                    {% when 'image' %}
+                        <picture class="image-ratio__pic image-ratio__pic--product">
+                            <source media="(min-width: 1440px)" srcset="{{ media | img_url: media_size_large, crop: 'center' }}">
+                            <source media="(min-width: 768px)" srcset="{{ media | img_url: media_size_medium, crop: 'center' }}">
+                            <img class="image-ratio__img" {% if forloop.index > 1 %}loading="lazy" importance="low"{% endif %} width="420" height="630" src="{{ media | img_url: media_size_small, crop: 'center' }}" alt="{{ product.title | escape }}" />
+                        </picture>
+                    {% when 'external_video' %}
+                        <div class="pdp__photos-item-video">
+                            {{ media | external_video_tag }}
+                        </div>
+                    {% when 'video' %}
+                        <div class="pdp__photos-item-video">
+                            {{ media | video_tag: image_size: gallery_image_size, controls: false, loop: true, autoplay: true, muted: true }}		
+                        </div>
+                    {% when 'model' %}
+                        {{ media | model_viewer_tag }}
+                    {% else %}
+                        {{ media | media_tag }}
+                    {% endcase %}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>

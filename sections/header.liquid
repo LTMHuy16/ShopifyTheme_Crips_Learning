@@ -1,0 +1,37 @@
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+<div class="container site-header__inner">
+    <button class="site-header__toggle-menu button button--icon js-toggle-menu" id="toggleMenu">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.3335 8H26.6668V10.6667H5.3335V8ZM5.3335 14.6667H26.6668V17.3333H5.3335V14.6667ZM5.3335 21.3333H26.6668V24H5.3335V21.3333Z" fill="#333333"/>
+        </svg>
+    </button>
+    {%- render 'header-logo', logo_svg: section.settings.logo_svg, logo: section.settings.logo -%}
+    {%- render 'header-functions' -%}
+    {%- render 'mega-menu', section: section -%}
+
+</div>
+
+{% schema %}
+{
+   "name": "Header",
+   "tag": "section",
+   "class": "site-header js-currency",
+   "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo"
+        },
+        {
+            "type": "textarea",
+            "id": "logo_svg",
+            "label": "Logo - SVG"
+        },
+        {
+            "type": "link_list",
+            "id": "mega_menu",
+            "label": "Mega Menu"
+        }
+   ]
+}
+{% endschema %}

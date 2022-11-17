@@ -1,0 +1,9 @@
+{{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+
+<div class="site-header__functions">
+    {% liquid 
+      render "header-search"
+      render "header-login"
+      render "header-cart"
+    %}
+</div>

@@ -1,0 +1,139 @@
+{%- liquid
+    assign video_source = block.settings.video_source
+    assign video_controls = block.settings.video_controls
+    assign video_autoplay = block.settings.video_autoplay
+    assign video_thumbnail = block.settings.video_thumbnail
+    assign video_alt = block.settings.video_alt
+    assign video_playicon_colour = block.settings.video_playicon_colour
+    assign video_size = image_size | split: ','
+    assign video_large = video_size[0]
+    assign video_wide = video_size[1]
+    assign video_medium = video_size[2]
+    assign video_small = video_size[3]
+    assign video_settings = ''
+
+    assign video_autoplay_settings = 'autoplay="autoplay" '
+
+    if video_autoplay == ''
+        assign video_autoplay_settings = ''
+    endif
+
+    case video_controls
+        when 'loop'
+            assign video_settings = 'loop="loop"'
+        when 'controls'
+            assign video_settings = 'controls="controls"'
+        when 'both'
+            assign video_settings = 'loop="loop" controls="controls"'
+    endcase
+
+    assign video_settings =  video_settings | prepend: video_autoplay_settings
+
+    if video_thumbnail != blank and video_link == blank
+        assign video_class = 'video-has-thumbnail'
+    else
+        assign video_class = 'video-source'
+        if video_autoplay == '' 
+            assign video_class = video_class | append: ' video-autoplay-false'
+        endif
+
+        if video_thumbnail == blank
+            assign video_class = video_class | append: ' no-thumbnail'
+        endif
+    endif    
+-%}
+
+<div class="{{class}}">
+    <div class=" video {{ video_class }}">
+        {%- if video_link != blank -%}
+            {%- if video_autoplay == '' -%}
+                <span class=" button-play video-source {{ video_playicon_flood }}" data-video="video-{{ video_link | handle }}"><span>Play</span></span>
+            {%- endif -%}
+            <video id="video-{{ video_link | handle }}" class="" preload="auto" muted="muted" {{ video_settings }} playsinline>
+                <source src="{{ video_link | append: '.mp4' | file_url  }}" type="video/mp4">
+            </video>
+        {%- else -%}
+            {%- if video_source != blank -%}
+                <span class="button-play {{ video_playicon_flood }}"><span>Play</span></span>
+                <div class="video-iframe {{ video_source.type }}" data-video-id="{{ video_source.id }}"></div>
+            {%- endif -%}
+        {%- endif -%}
+
+        {%- if video_thumbnail != blank -%}
+            <picture>
+                <!--Large-->        
+                {%- liquid
+                    assign video_w = video_thumbnail.width
+                    assign video_h = video_thumbnail.height
+                    assign size_w = video_large | split: 'x' | first 
+                    assign size_h = video_large | split: 'x' | last 
+                -%}    
+                    
+                {%- if video_w >= 2560 -%}
+                    {%- assign size = '2560x' -%}
+                    <source media="(min-width: 1921px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {%- elsif video_w >= 1920 -%}
+                    {%- assign size = '1920x' | append: size_h -%}
+                    <source media="(min-width: 1681px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {%- elsif video_w >= 1680 -%}
+                    {%- assign size = '1680x' | append: size_h -%}
+                    <source media="(min-width: 1481px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {%- elsif video_w >= 1280 -%}
+                    {%- assign size = '1280x' | append: size_h -%}
+                    <source media="(min-width: 1025px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {% else %}
+                    <source media="(min-width: 1025px)" srcset="{{ video_thumbnail | img_url: video_large, 'center' }}">
+                {%- endif -%}  
+
+                <!--Wide-->
+                {%- liquid
+                    assign size_w = video_wide | split: 'x' | first 
+                    assign size_h = video_wide | split: 'x' | last 
+                -%}    
+
+                {%- if video_w >= 1024 -%}
+                    {%- assign size = '1024x' | append: size_h -%}
+                    <source media="(min-width: 961px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {% else %}
+                    <source media="(min-width: 961px)" srcset="{{ video_thumbnail | img_url: video_wide, crop: 'center' }}">
+                {%- endif -%}      
+
+                <!--Medium-->
+                {%- liquid
+                    assign size_w = video_medium | split: 'x' | first 
+                    assign size_h = video_medium | split: 'x' | last 
+                -%}      
+
+                {%- if video_w >= 960 -%}
+                    {%- assign size = '960x' | append: size_h -%}
+                    <source media="(min-width: 861px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {% else %}
+                    <source media="(min-width: 861px)" srcset="{{ video_thumbnail | img_url: video_medium, crop: 'center' }}">
+                {%- endif -%}
+
+                <!--Small-->
+                {%- liquid
+                    assign size_w = video_small | split: 'x' | first 
+                    assign size_h = video_small | split: 'x' | last 
+                -%}  
+                
+                {%- if video_w >= 860 -%}
+                    {%- assign size = '860x' | append: size_h -%}
+                    <source media="(min-width: 769px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {%- elsif video_w >= 768 -%}
+                    {%- assign size = '768x' | append: size_h -%}
+                    <source media="(min-width: 481px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {%- elsif video_w >= 480 -%}
+                    {%- assign size = '480x' | append: size_h -%}
+                    <source media="(min-width: 375px)" srcset="{{ video_thumbnail | img_url: size, crop: 'center' }}">
+                {% else %}
+                    <source media="(min-width: 375px)" srcset="{{ video_thumbnail | img_url: video_small, crop: 'center' }}">
+                {%- endif -%}
+                <source srcset="{{ video_thumbnail | img_url: video_small, crop: 'center' }}">
+                <img src="{{ video_thumbnail | img_url: 'master' }}" width="{{ size_w }}" height="{{ size_h }}"  alt="{{ video_alt }}" />
+            </picture>
+        {%- endif -%}
+        {{- content_shop -}}
+    </div>
+</div>
+
