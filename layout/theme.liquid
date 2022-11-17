@@ -23,9 +23,8 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-    </script>
   </head>
+  
   <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} store-{{store_name}}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
