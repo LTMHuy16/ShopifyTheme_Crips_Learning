@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% if template.name == 'product' %}
     <title>{{ product.title  }}</title>
 
@@ -20,4 +21,28 @@
     <title>Cripst</title>
         
 
+=======
+{% if template.name == 'product' %}
+    <title>{{ product.title  }}</title>
+
+{% elsif template.name == 'collection'%}
+    <title>{{ collection.title  }}</title>
+
+{% elsif template.name == 'blog' %}
+    <title>{{ blog.title  }}</title>
+
+{% elsif template.name == 'article' %}
+    <title>{{ article.title  }}</title>
+
+{% elsif template.name == 'page' %}
+    <title>{{ page.title  }}</title>
+
+{% elsif template.name == 'index' %}
+    <title>Home</title>
+
+{% else %}
+    <title>Cripst</title>
+        
+
+>>>>>>> b888a2107268b0e2cdca76225006fb3a86f7ebb0
 {% endif %}
