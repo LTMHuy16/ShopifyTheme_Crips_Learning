@@ -10,7 +10,7 @@
     <meta name="format-detection" content="telephone=no">
 
     {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+        <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
     
     {%- if page_description -%}
@@ -19,43 +19,22 @@
 
     {%- include 'head-css-variables' -%}
 
-    {{ 'shopify-money.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'jquery.min.js' | asset_url | script_tag }}
-    {{ 'jquery.cookie.js' | asset_url | script_tag }} 
-    {{ 'shopify-money.js' | asset_url | script_tag }}
-
     {{ content_for_header }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
-    {%- render 'shop-currency' -%}
-    <script src="/services/javascripts/currencies.js"></script>
-    <script src="{{ 'jquery.currencies.min.js'| asset_url }}"></script>
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-    </script>
   </head>
+
   <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} store-{{store_name}}">
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
-    </a>
-
-    <div id="PageContainer" class="page-container">
-      <header class="header">
-          {%- section 'topbar' -%}
-          {%- section 'header' -%}
-      </header>
-      <main class="main" id="MainContent">
-          {{ content_for_layout }}
-      </main>
-      {%- section 'footer' -%}
-  </div>
+        <div id="PageContainer" class="page-container">
+        <header class="header">
+            {%- section 'header' -%}
+        </header>
+        <main class="main" id="MainContent">
+            {{ content_for_layout }}
+        </main>
+        {%- section 'footer' -%}
+    </div>
   </body>
-
-  {%- liquid
-    render 'theme-icons'
-    section 'newletter-modal'
-    section 'currency-switcher'
-    section 'color-swatches'
-  -%}
   
 </html>
