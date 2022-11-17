@@ -10,7 +10,7 @@
     <meta name="format-detection" content="telephone=no">
 
     {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+        <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
     
     {%- if page_description -%}
@@ -19,18 +19,10 @@
 
     {%- include 'head-css-variables' -%}
 
-    {{ 'shopify-money.js' | asset_url | preload_tag: as: 'script' }}
-    {{ 'jquery.min.js' | asset_url | script_tag }}
-    {{ 'jquery.cookie.js' | asset_url | script_tag }} 
-    {{ 'shopify-money.js' | asset_url | script_tag }}
-
     {{ content_for_header }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
-    {%- render 'shop-currency' -%}
-    <script src="/services/javascripts/currencies.js"></script>
-    <script src="{{ 'jquery.currencies.min.js'| asset_url }}"></script>
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
   </head>
