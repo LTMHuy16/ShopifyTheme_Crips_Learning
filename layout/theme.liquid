@@ -28,7 +28,6 @@
   <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} store-{{store_name}}">
         <div id="PageContainer" class="page-container">
         <header class="header">
-            {%- section 'topbar' -%}
             {%- section 'header' -%}
         </header>
         <main class="main" id="MainContent">
