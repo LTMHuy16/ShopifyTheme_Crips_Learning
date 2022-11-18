@@ -1,8 +1,0 @@
-@mixin color-opacity($RGB_background: #fff, $RGB_color: #222, $value: 0.5) {
-    $RGBA_color: rgba($RGB_color, $value);
-    $alpha: alpha($RGBA_color);
-    $red: (1 - $alpha) * red($RGB_background) + $alpha * red($RGB_color);
-    $green: (1 - $alpha) * green($RGB_background) + $alpha * green($RGB_color);
-    $blue: (1 - $alpha) * blue($RGB_background) + $alpha * blue($RGB_color);
-    color: rgb($red, $green, $blue);
-}

@@ -18,22 +18,6 @@ span {
     color: $color-title;
 }
 
-.hidden {
-    display: none;
-
-    &--desk {
-        @include mq($mq-desk) {
-            display: none;
-        }
-    }
-
-    &--mob {
-        @include mq($mq-desk, max) {
-            display: none;
-        }
-    }
-}
-
 .visually-hidden {
     position: absolute !important;
     overflow: hidden;
@@ -47,26 +31,21 @@ span {
     @include font-size(16);
 }
 
-.section {
-    &-header__404 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 600px;
-        height: 50vh;
-        text-align: center;
-        margin: 0 auto;
+/*=================================
+    UTILITY CLASSES 
+================================ */
+.hidden {
+    display: none;
 
-        &-title {
-            padding-bottom: 2rem;
-        }
-
-        &-content {
-            padding-bottom: 2rem;
+    &--desk {
+        @include mq($mq-desk) {
+            display: none;
         }
     }
 
-    &-border {
-        border-bottom: 0.1rem solid $color-border-section;
+    &--mob {
+        @include mq($mq-desk, max) {
+            display: none;
+        }
     }
 }

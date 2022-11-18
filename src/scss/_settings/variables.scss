@@ -6,21 +6,28 @@ $spacing: 2.4rem; // 20px
 $spacing-wide: 6rem; // 60px
 
 //Font Family
+$font-main: 'Oswald', sans-serif;
+$font-second: 'Roboto', sans-serif;
 
-$font-title: "Poppins", sans-serif;
-$font-body: "Poppins", sans-serif;
+$font-title: $font-main;
+$font-body: $font-second;
+
 $font-title-weight: var(--font-title-weight);
 $font-body-weight: var(--font-body-weight);
 $font-medium-weight: var(--font-medium-weight);
-$font-icon: icomoon;
 
-//Colour
-$color-primary: #af5071;
+//Colors
 $theme-color: var(--theme-color);
 $color-dark: var(--color-dark);
 $color-light: var(--color-light);
 $color-title: var(--color-title);
 $color-body: var(--color-body);
+$color-dark-rgb: var(--color-dark-rgb);
+$color-light-rgb: var(--color-light-rgb);
+$color-brand-rgb: var(--color-brand-rgb);
+$color-highlight-rgb: var(--color-highlight-rgb);
+
+$color-primary: #af5071;
 $color-button: $color-primary;
 $color-button-text: $color-light;
 $color-button-border: $color-primary;
@@ -48,12 +55,7 @@ $color-grey-2: #88858a;
 $color-grey-3: #545156;
 $color-bg-grey: #f6f6f7;
 
-$color-dark-rgb: var(--color-dark-rgb);
-$color-light-rgb: var(--color-light-rgb);
-$color-brand-rgb: var(--color-brand-rgb);
-$color-highlight-rgb: var(--color-highlight-rgb);
-
-//Breakingpoints
+// Breakpoints
 $mq-mob: 480px;
 $mq-mob-small: 420px;
 $mq-mob-med: 560px;
@@ -66,6 +68,23 @@ $mq-desk: 960px;
 $mq-desk-sml: 1024px;
 $mq-desk-med: 1280px;
 $mq-desk-lrg: 1440px;
+
+/* Breakpoints to render grid system */
+$grid-columns: 12;
+
+$breakpoints: (
+  "": 0,
+  "sm-": $mq-mob,
+  "md-": $mq-tab,
+  "lg-": $mq-desk,
+);
+
+/* Breakpoints will be added spacing classes */
+$spacing-breakpoints: (
+  "": 0,
+  "md-": $mq-mob,
+  "lg-": $mq-desk,
+);
 
 // Animation
 $easing: cubic-bezier(0.645, 0.045, 0.355, 1);
