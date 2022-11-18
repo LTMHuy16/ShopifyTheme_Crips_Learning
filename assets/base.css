@@ -273,14 +273,8 @@ h6, .h6 {
     flex-direction: column; }
   .flex-col-reverse {
     flex-direction: column-reverse; }
-  .flex-wrap {
-    flex-wrap: wrap; }
-  .justify-start {
-    justify-content: flex-start; }
   .justify-center {
     justify-content: center; }
-  .justify-end {
-    justify-content: flex-end; }
   .justify-between {
     justify-content: space-between; }
   .items-start {
@@ -319,14 +313,8 @@ h6, .h6 {
     flex-direction: column; }
   .flex-sm-col-reverse {
     flex-direction: column-reverse; }
-  .flex-sm-wrap {
-    flex-wrap: wrap; }
-  .justify-sm-start {
-    justify-content: flex-start; }
   .justify-sm-center {
     justify-content: center; }
-  .justify-sm-end {
-    justify-content: flex-end; }
   .justify-sm-between {
     justify-content: space-between; }
   .items-sm-start {
@@ -365,14 +353,8 @@ h6, .h6 {
     flex-direction: column; }
   .flex-md-col-reverse {
     flex-direction: column-reverse; }
-  .flex-md-wrap {
-    flex-wrap: wrap; }
-  .justify-md-start {
-    justify-content: flex-start; }
   .justify-md-center {
     justify-content: center; }
-  .justify-md-end {
-    justify-content: flex-end; }
   .justify-md-between {
     justify-content: space-between; }
   .items-md-start {
@@ -411,14 +393,8 @@ h6, .h6 {
     flex-direction: column; }
   .flex-lg-col-reverse {
     flex-direction: column-reverse; }
-  .flex-lg-wrap {
-    flex-wrap: wrap; }
-  .justify-lg-start {
-    justify-content: flex-start; }
   .justify-lg-center {
     justify-content: center; }
-  .justify-lg-end {
-    justify-content: flex-end; }
   .justify-lg-between {
     justify-content: space-between; }
   .items-lg-start {
