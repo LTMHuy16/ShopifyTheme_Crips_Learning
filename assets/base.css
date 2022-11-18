@@ -302,8 +302,10 @@ h6, .h6 {
 .flexbox__item {
   width: 100%; }
 
-.flexbox__item--1 {
-  width: 100%; }
+@media screen and (min-width: 960px) {
+  .flexbox__item {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem; } }
 
 .flexbox__item--2 {
   width: 50%; }
@@ -325,11 +327,6 @@ h6, .h6 {
 
 .flexbox__item--8 {
   width: 12.5%; }
-
-@media screen and (min-width: 960px) {
-  .flexbox__item {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem; } }
 
 button, .button {
   display: inline-block;
