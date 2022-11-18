@@ -157,17 +157,6 @@ a, span {
   display: block;
   color: var(--color-title); }
 
-.hidden {
-  display: none; }
-
-@media screen and (min-width: 960px) {
-  .hidden--desk {
-    display: none; } }
-
-@media screen and (max-width: 960px) {
-  .hidden--mob {
-    display: none; } }
-
 .visually-hidden {
   position: absolute !important;
   overflow: hidden;
