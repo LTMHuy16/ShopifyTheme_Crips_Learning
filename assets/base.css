@@ -321,7 +321,19 @@ h6, .h6 {
   .flexbox__item--5 {
     width: 20%; }
   .flexbox__item--6 {
-    width: 16.66667%; } }
+    width: 16.66667%; }
+  .flexbox__item--7 {
+    width: 14.28571%; }
+  .flexbox__item--8 {
+    width: 12.5%; }
+  .flexbox__item--9 {
+    width: 11.11111%; }
+  .flexbox__item--10 {
+    width: 10%; }
+  .flexbox__item--11 {
+    width: 9.09091%; }
+  .flexbox__item--12 {
+    width: 8.33333%; } }
 
 @media screen and (min-width: 960px) {
   .flexbox__item {
