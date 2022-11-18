@@ -267,8 +267,6 @@ h6, .h6 {
   padding-right: 0; }
 
 @media screen and (min-width: 0) {
-  .flex-1 {
-    flex: 1; }
   .flex-reverse {
     flex-direction: row-reverse; }
   .flex-col {
@@ -315,8 +313,6 @@ h6, .h6 {
     width: auto; } }
 
 @media screen and (min-width: 480px) {
-  .flex-sm-1 {
-    flex: 1; }
   .flex-sm-reverse {
     flex-direction: row-reverse; }
   .flex-sm-col {
@@ -363,8 +359,6 @@ h6, .h6 {
     width: auto; } }
 
 @media screen and (min-width: 768px) {
-  .flex-md-1 {
-    flex: 1; }
   .flex-md-reverse {
     flex-direction: row-reverse; }
   .flex-md-col {
@@ -411,8 +405,6 @@ h6, .h6 {
     width: auto; } }
 
 @media screen and (min-width: 960px) {
-  .flex-lg-1 {
-    flex: 1; }
   .flex-lg-reverse {
     flex-direction: row-reverse; }
   .flex-lg-col {
