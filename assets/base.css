@@ -307,17 +307,25 @@ h6, .h6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem; } }
 
-.flexbox__item--2 {
-  width: 50%; }
+@media screen and (min-width: 960px) {
+  .flexbox__item--2 {
+    width: 50%; } }
 
-.flexbox__item--3 {
-  width: 33.33333%; }
+@media screen and (min-width: 960px) {
+  .flexbox__item--3 {
+    width: 33.33333%; } }
 
-.flexbox__item--4 {
-  width: 25%; }
+@media screen and (min-width: 960px) {
+  .flexbox__item--4 {
+    width: 25%; } }
 
-.flexbox__item--5 {
-  width: 20%; }
+@media screen and (min-width: 960px) {
+  .flexbox__item--5 {
+    width: 20%; } }
+
+@media screen and (min-width: 960px) {
+  .flexbox__item--large {
+    width: 66.666666%; } }
 
 button, .button {
   display: inline-block;
