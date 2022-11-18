@@ -238,6 +238,17 @@ h6, .h6 {
 .text-600 {
   font-weight: 600; }
 
+.hidden {
+  display: none; }
+
+@media screen and (min-width: 960px) {
+  .hidden--desk {
+    display: none; } }
+
+@media screen and (max-width: 960px) {
+  .hidden--mob {
+    display: none; } }
+
 .container {
   max-width: 126rem;
   padding-left: 2.4rem;
