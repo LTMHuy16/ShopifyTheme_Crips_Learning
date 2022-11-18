@@ -319,15 +319,6 @@ h6, .h6 {
 .flexbox__item--5 {
   width: 20%; }
 
-.flexbox__item--6 {
-  width: 16.66667%; }
-
-.flexbox__item--7 {
-  width: 14.28571%; }
-
-.flexbox__item--8 {
-  width: 12.5%; }
-
 button, .button {
   display: inline-block;
   padding: 1rem 3rem;
