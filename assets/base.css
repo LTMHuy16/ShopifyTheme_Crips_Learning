@@ -148,7 +148,7 @@ html {
   overflow-x: hidden; }
 
 body {
-  font-family: "Poppins",sans-serif;
+  font-family: "Roboto",sans-serif;
   font-weight: var(--font-body-weight);
   font-size: 16px;
   font-size: 1.6rem;
@@ -183,7 +183,7 @@ a, span {
     display: none; } }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins",sans-serif;
+  font-family: "Oswald",sans-serif;
   font-weight: var(--font-body-weight);
   letter-spacing: 0.1em;
   color: var(--color-title);
@@ -333,7 +333,7 @@ button, .button {
   padding: 1rem 3rem;
   color: var(--color-title);
   background-color: var(--theme-color);
-  font-family: "Poppins",sans-serif;
+  font-family: "Oswald",sans-serif;
   font-size: 12px;
   font-size: 1.2rem;
   line-height: 1.5;
@@ -393,7 +393,7 @@ button, .button {
   width: 100%; }
 
 input, .input {
-  font-family: "Poppins",sans-serif;
+  font-family: "Roboto",sans-serif;
   color: #545156;
   font-size: 16px;
   font-size: 1.6rem;
@@ -411,7 +411,7 @@ input--small, .input--small {
   line-height: 1.5; }
 
 textarea, .textarea {
-  font-family: "Poppins",sans-serif;
+  font-family: "Roboto",sans-serif;
   color: #545156;
   font-size: 16px;
   font-size: 1.6rem;
@@ -423,7 +423,7 @@ textarea, .textarea {
   min-height: 12.4rem; }
 
 select, .select, option, .option {
-  font-family: "Poppins",sans-serif;
+  font-family: "Roboto",sans-serif;
   color: #545156;
   font-size: 16px;
   font-size: 1.6rem;
