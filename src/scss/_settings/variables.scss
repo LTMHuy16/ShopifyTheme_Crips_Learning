@@ -1,61 +1,75 @@
-//Layout
+/*=================== 
+    LAYOUT
+==================== */
 $max-width: 126rem; // 1560px
 $max-width-large: 1560px;
 $max-width-small: 114rem; // 1140rem
 $spacing: 2.4rem; // 20px
 $spacing-wide: 6rem; // 60px
 
-//Font Family
-$font-main: 'Oswald', sans-serif;
-$font-second: 'Roboto', sans-serif;
-
-$font-title: $font-main;
-$font-body: $font-second;
+/*=================== 
+    FONT FAMILY
+==================== */
+$font-main: "Oswald", sans-serif;
+$font-second: "Roboto", sans-serif;
 
 $font-title-weight: var(--font-title-weight);
-$font-body-weight: var(--font-body-weight);
 $font-medium-weight: var(--font-medium-weight);
+$font-body-weight: var(--font-body-weight);
 
-//Colors
+/*=================== 
+    COLORS
+==================== */
+
+/* BASE COLORS */
 $theme-color: var(--theme-color);
 $color-dark: var(--color-dark);
 $color-light: var(--color-light);
 $color-title: var(--color-title);
 $color-body: var(--color-body);
-$color-dark-rgb: var(--color-dark-rgb);
-$color-light-rgb: var(--color-light-rgb);
-$color-brand-rgb: var(--color-brand-rgb);
-$color-highlight-rgb: var(--color-highlight-rgb);
 
-$color-primary: #af5071;
-$color-button: $color-primary;
-$color-button-text: $color-light;
-$color-button-border: $color-primary;
-$color-input: $color-light;
-$color-input-text: $color-body;
-$color-border-secondary: #d7d7d7;
-$color-border-primary: #eee9ef;
-$color-border-input: #dcd9de;
-$color-border-section: #e8e8e8;
-$color-border-sizes: #fcdfc6;
-$color-border-footer: #ebe4ec;
-$color-dark1: #444444;
-$color-error: #cf142b;
-$color-pink: #ffd7de;
-$color-orange: #ff7e20;
-$color-cream: #fff5ee;
-$color-blue: #1a72f6;
-$color-light-blue: #eef9ff;
-$color-green: #72b41f;
-$color-light-green: #e7edd9;
-$color-purple: #9f16a1;
-$color-light-purple: #f9edff;
-$color-grey: #b0aeb1;
-$color-grey-2: #88858a;
-$color-grey-3: #545156;
-$color-bg-grey: #f6f6f7;
+/* CONTROLS COLORS */
+$color-error: var(--color-error);
+$color-success: var(--color-success);
+$color-info: var(--color-info);
+$bg-error: var(--bg-error);
+$bg-success: var(--bg-success);
+$bg-info: var(--bg-info);
 
-// Breakpoints
+/* BUTTON COLORS */
+$color-btn-banner: var(--color-btn-banner);
+$color-btn-banner-bg: var(--color-btn-banner-bg);
+$color-btn-banner-border: var(--color-btn-banner-border);
+
+$color-btn-cart: var(--color-btn-cart);
+$color-btn-cart-bg: var(--color-btn-cart-bg);
+$color-btn-cart-border: var(--color-btn-cart-border);
+
+$color-btn-icon: var(--color-btn-icon);
+$color-btn-icon-bg: var(--color-btn-icon-bg);
+
+$color-btn-submit: var(--color-btn-submit);
+$color-btn-submit-bg: var(--color-btn-submit-bg);
+$color-btn-submit-border: var(--color-btn-submit-border);
+
+$color-input-text: var(--color-input-text);
+$color-input-border: var(--color-input-border);
+$color-label-text: var(--color-label-text);
+
+
+/* FIXED COLORS */
+$color-primary: #e6f1fa;
+$color-main: #eb5757;
+$color-blue: #57a4eb;
+$color-blue1: #0f6db1;
+$color-grey: #3f3f3f;
+$color-grey1: #828282;
+$color-grey-2: #f0f2f2;
+$color-grey-3: #c4c4c4;
+
+/*=================== 
+    BREAKPOINTS
+==================== */
 $mq-mob: 480px;
 $mq-mob-small: 420px;
 $mq-mob-med: 560px;
@@ -69,22 +83,7 @@ $mq-desk-sml: 1024px;
 $mq-desk-med: 1280px;
 $mq-desk-lrg: 1440px;
 
-/* Breakpoints to render grid system */
-$grid-columns: 12;
-
-$breakpoints: (
-  "": 0,
-  "sm-": $mq-mob,
-  "md-": $mq-tab,
-  "lg-": $mq-desk,
-);
-
-/* Breakpoints will be added spacing classes */
-$spacing-breakpoints: (
-  "": 0,
-  "md-": $mq-mob,
-  "lg-": $mq-desk,
-);
-
-// Animation
+/*=================== 
+    ANIMATION
+==================== */
 $easing: cubic-bezier(0.645, 0.045, 0.355, 1);

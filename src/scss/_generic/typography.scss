@@ -4,46 +4,86 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: $font-title;
-    font-weight: $font-body-weight;
-    letter-spacing: 0.1em;
+    font-family: $font-main;
     color: $color-title;
-    line-height: 1.1;
 }
 
 h1,
 .h1 {
-    @include font-size(50, 1.6);
+    @include font-size(68, 1.11);
+    font-weight: $font-title-weight;
+
+    @include mq(($mq-mob, $mq-desk)) {
+        @include font-size(75);
+    }
+
+    @include mq($mq-desk) {
+        @include font-size(86);
+    }
 }
 
 h2,
 .h2 {
-    @include font-size(36);
+    @include font-size(44, 1.286);
+    font-weight: $font-medium-weight;
+
+    @include mq(($mq-mob, $mq-desk)) {
+        @include font-size(50);
+    }
+
+    @include mq($mq-desk) {
+        @include font-size(56);
+    }
 }
 
 h3,
 .h3 {
-    @include font-size(24);
-    font-weight: 600;
+    @include font-size(38, 1.292);
+    font-weight: $font-title-weight;
+
+    @include mq(($mq-mob, $mq-desk)) {
+        @include font-size(42);
+    }
 
     @include mq($mq-desk) {
-        @include font-size(32);
+        @include font-size(48);
     }
 }
 
 h4,
 .h4 {
-    @include font-size(16, 1.5);
+    @include font-size(20, 1.48);
+    letter-spacing: 0.1rem;
+
+    @include mq($mq-mob) {
+        @include font-size(25);
+    }
 }
 
 h5,
 .h5 {
-    @include font-size(13, 1.5);
+    @include font-size(20, 1);
+
+    @include mq($mq-mob) {
+        @include font-size(24);
+    }
 }
 
 h6,
 .h6 {
-    @include font-size(12, 1.5);
+    @include font-size(14, 1.48);
+
+    @include mq($mq-mob) {
+        @include font-size(18);
+    }
+}
+
+.h7 {
+    @include font-size(12, 1.48);
+
+    @include mq($mq-mob) {
+        @include font-size(14);
+    }
 }
 
 .text {
@@ -75,6 +115,10 @@ h6,
         text-align: right;
     }
 
+    &-300 {
+        font-weight: 300;
+    }
+
     &-500 {
         font-weight: 500;
     }
@@ -83,3 +127,14 @@ h6,
         font-weight: 600;
     }
 }
+
+.font {
+    &-main {
+        font-family: $font-main;
+    }
+
+    &-second {
+        font-family: $font-second;
+    }
+}
+

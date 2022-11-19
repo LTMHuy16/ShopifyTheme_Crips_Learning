@@ -1,80 +1,59 @@
 @import "./_settings/core";
 
-input,
 .input {
-    font-family: $font-body;
-    color: $color-grey-3;
-    @include font-size(16, 1.5);
-    padding: 1rem 1.5rem;
-    border: 0.1rem solid $color-border-input;
-    width: 100%;
+    font-family: $font-second;
+    padding: 0.9rem 1.6rem;
+    color: $color-input-text;
+    @include font-size(13, 1.5);
+    font-weight: 400;
+    border: 0.1rem solid $color-input-border;
+    outline: none;
+    transition: all 0.1s ease;
+
+    @include mq($mq-mob) {
+        @include font-size(16);
+    }
 
     &::placeholder {
-        opacity: 0.5;
+        color: $color-input-text;
+        opacity: 0.6;
     }
 
-    &--small {
-        @include font-size(12, 1.5);
+    &:focus {
+        border-width: 0.2rem;
+        padding: 0.8rem 1.6rem;
     }
-}
 
-textarea,
-.textarea {
-    font-family: $font-body;
-    color: $color-grey-3;
-    @include font-size(16, 1.5);
-    padding: 1rem 1.5rem;
-    border: 0.1rem solid $color-border-input;
-    width: 100%;
-    resize: none;
-    min-height: 12.4rem;
-}
+    &--error {
+        border-color: $color-error;
+    }
 
-select,
-.select,
-option,
-.option {
-    font-family: $font-body;
-    color: $color-grey-3;
-    @include font-size(16, 1.5);
-    padding: 1rem 1.5rem;
-    border: 0.1rem solid $color-border-input;
-    width: 100%;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-
-    &--collection {
-        padding: 0;
-        border: none;
-        color: $color-title;
-        @include font-size(13, 1.7);
+    &--success {
+        border-color: $color-success;
     }
 }
 
-.select-label {
-    position: relative;
+.label {
+    font-family: $font-second;
+    @include font-size(12, 1.687);
+    font-weight: 400;
+    color: $color-label-text;
 
-    &::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 1.5rem;
-        z-index: 2;
-        transform: translateY(-50%);
-        pointer-events: none;
-        background-image: url("data:image/svg+xml,%3Csvg width='6' height='4' viewBox='0 0 6 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.00127 2.57772L0.756586 0.333133C0.694927 0.271328 0.612488 0.237328 0.524585 0.237328C0.436634 0.237328 0.354244 0.271328 0.292488 0.333133L0.0959025 0.529816C0.0340488 0.591523 3.68264e-08 0.674011 3.57781e-08 0.761913C3.47299e-08 0.849816 0.0340488 0.932206 0.0959025 0.993962L2.76839 3.6665C2.83034 3.7285 2.91312 3.76245 3.00112 3.76221C3.08951 3.76245 3.1722 3.72855 3.2342 3.6665L5.9041 0.99645C5.96595 0.934694 6 0.852304 6 0.764353C6 0.67645 5.96595 0.59406 5.9041 0.532255L5.70751 0.335621C5.57956 0.20767 5.37127 0.20767 5.24337 0.335621L3.00127 2.57772Z' fill='%232D292F'/%3E%3C/svg%3E%0A");
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        width: 1.6rem;
-        height: 0.6rem;
+    @include mq($mq-mob) {
+        @include font-size(16);
     }
 
-    &--collection {
+    &--required {
+        position: relative;
+        padding-right: 1rem;
+
         &::before {
+            content: "*";
+            position: absolute;
+            top: -0.2rem;
             right: 0;
+            color: $color-error;
+            pointer-events: none;
         }
     }
 }

@@ -1,0 +1,59 @@
+@import "./_settings/core";
+
+.form {
+    &-group {
+    }
+
+    &-control {
+        margin-bottom: 1.5rem;
+
+        @include mq($mq-mob) {
+            display: flex;
+        }
+
+        &__label {
+            font-family: $font-second;
+            display: inline-block;
+            margin: {
+                right: 1.5rem;
+                bottom: 0.5rem;
+            }
+
+            @include mq($mq-mob) {
+                width: 100%;
+                max-width: 13.4rem;
+                margin-bottom: 0;
+            }
+        }
+
+        &__input {
+            width: 100%;
+        }
+
+        &__wrap {
+            width: 100%;
+        }
+
+        &__info {
+            font-family: $font-second;
+            margin-top: 0.8rem;
+            @include font-size(11, 1.14);
+
+            @include mq($mq-mob) {
+                @include font-size(14);
+            }
+
+            &.error {
+                color: $color-error;
+            }
+
+            &.success {
+                color: $color-success;
+            }
+
+            &.info {
+                color: $color-info;
+            }
+        }
+    }
+}

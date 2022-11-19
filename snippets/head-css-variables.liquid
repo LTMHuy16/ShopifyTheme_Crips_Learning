@@ -1,38 +1,91 @@
 {%-liquid
-  assign theme_color = settings.theme_color
-  assign color_title = settings.color_title
-  assign color_dark = settings.color_dark
-  assign color_light = settings.color_light
+	assign theme_color 	 = settings.theme_color
+	assign color_dark	 = settings.color_dark
+	assign color_light	 = settings.color_light
+	assign color_title 	 = settings.color_title
+	assign color_body	 = settings.color_body
+
+	assign color_error   = settings.color_error
+	assign color_success = settings.color_success
+	assign color_info    = settings.color_info
+	assign bg_error   	 = settings.bg_error
+	assign bg_success 	 = settings.bg_success
+	assign bg_info    	 = settings.bg_info
+
+	assign banner_btn_color  = settings.banner_btn_color
+	assign banner_btn_bg 	 = settings.banner_btn_bg
+	assign banner_btn_border = settings.banner_btn_border
+
+	assign cart_btn_color  = settings.cart_btn_color
+	assign cart_btn_bg 	   = settings.cart_btn_bg
+	assign cart_btn_border = settings.banner_btn_border
+
+	assign icon_btn_color  = settings.icon_btn_color
+	assign icon_btn_bg 	   = settings.icon_btn_bg
+
+	assign submit_btn_color  = settings.submit_btn_color
+	assign submit_btn_bg 	 = settings.submit_btn_bg
+	assign submit_btn_border = settings.submit_btn_border
+
+	assign input_color  	= settings.input_color
+	assign input_border 	= settings.input_border
+	assign label_color 		= settings.label_color
+
+	assign color_title_weight  = settings.font_title_weight
+	assign color_medium_weight = settings.font_medium_weight
+	assign color_body_weight   = settings.font_body_weight
+
 -%}
 
 {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
-
-      :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
-
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
-
-        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
-        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
-
-        --theme-color : {{ theme_color }};
-
-        --color-title: {{ color_title }};
-        --color-dark: {{ color_dark }};
+    :root {
+        /*=================== 
+			THEME COLORS
+		==================== */
+        --theme-color: {{ theme_color }};
+        --color-dark: {{ color_dark  }};
         --color-light: {{ color_light }};
+        --color-title: {{ color_title }};
+        --color-body: {{ color_body  }};
 
-        --font-title-weight: 600;
-        --font-medium-weight: 500;
-        --font-body-weight: 400;
+        --color-error: {{ color_error   }};
+        --color-success: {{ color_success }};
+        --color-info: {{ color_info    }};
 
-      }
-    {% endstyle %}
+        --bg-error: {{ bg_error   }};
+        --bg-success: {{ bg_success }};
+        --bg-info: {{ bg_info    }};
+
+        /*=================== 
+			BUTTON COLORS
+		==================== */
+        --color-btn-banner: {{ banner_btn_color  }};
+        --color-btn-banner-bg: {{ banner_btn_bg 	   }};
+        --color-btn-banner-border: {{ banner_btn_border }};
+
+        --color-btn-cart: {{ cart_btn_color  }};
+        --color-btn-cart-bg: {{ cart_btn_bg 	 }};
+        --color-btn-cart-border: {{ cart_btn_border }};
+
+        --color-btn-icon: {{ icon_btn_color  }};
+        --color-btn-icon-bg: {{ icon_btn_bg 	 }};
+
+        --color-btn-submit: {{ submit_btn_color  }};
+        --color-btn-submit-bg: {{ submit_btn_bg 	   }};
+        --color-btn-submit-border: {{ submit_btn_border }};
+
+        --color-input-text: {{ input_color  }};
+        --color-input-border: {{ input_border }};
+        --color-label-text: {{ label_color }};
+
+        /*=================== 
+			FONT WEIGHT
+		==================== */
+        --font-title-weight: {{ color_title_weight  }};
+        --font-medium-weight: {{ color_medium_weight }};
+        --font-body-weight: {{ color_body_weight   }};
+
+
+
+    }
+{% endstyle %}

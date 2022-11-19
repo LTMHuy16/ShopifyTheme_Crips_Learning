@@ -1,0 +1,262 @@
+[
+    {
+        "name": "theme_info",
+        "theme_name": "Crips",
+        "theme_author": "HUY Le",
+        "theme_version": "1.0.0",
+        "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes\/os20\/themes-by-shopify\/dawn",
+        "theme_support_url": "https:\/\/support.shopify.com\/"
+    },
+    {
+        "name": "Colors",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Base Colors" 
+            },
+            {
+                "type": "color",
+                "id": "theme_color",
+                "default": "#000000",
+                "label": "Theme Color"
+            },
+            {
+                "type": "color",
+                "id": "color_dark",
+                "default": "#000000",
+                "label": "Color Dark"
+            },
+            {
+                "type": "color",
+                "id": "color_light",
+                "default": "#FFFFFF",
+                "label": "Color Light"
+            },
+            {
+                "type": "color",
+                "id": "color_body",
+                "default": "#000000",
+                "label": "Color Body"
+            },
+            {
+                "type": "color",
+                "id": "color_title",
+                "default": "#000000",
+                "label": "Color Title"
+            },
+            {
+                "type": "header",
+                "content": "Controls Colors" 
+            },
+            {
+                "type": "color",
+                "id": "color_error",
+                "default": "#EB5757",
+                "label": "Color Error"
+            },
+            {
+                "type": "color",
+                "id": "bg_error",
+                "default": "#FFE3E3",
+                "label": "Background Error"
+            },
+            {
+                "type": "color",
+                "id": "color_success",
+                "default": "#27AE60",
+                "label": "Color Success"
+            },
+            {
+                "type": "color",
+                "id": "bg_success",
+                "default": "#E3FFE9",
+                "label": "Background Success"
+            },
+            {
+                "type": "color",
+                "id": "color_info",
+                "default": "#0F6DB1",
+                "label": "Color Info"
+            },
+            {
+                "type": "color",
+                "id": "bg_info",
+                "default": "#E6F1FA",
+                "label": "Background Info"
+            },
+            {
+                "type": "header",
+                "content": "Banner Button Colors" 
+            },
+            {
+                "type": "color",
+                "id": "banner_btn_color",
+                "default": "#000000",
+                "label": "Text Color"
+            },
+            {
+                "type": "color",
+                "id": "banner_btn_bg",
+                "default": "#000000",
+                "label": "Background Color"
+            },
+            {
+                "type": "color",
+                "id": "banner_btn_border",
+                "default": "#000000",
+                "label": "Border Color"
+            },
+            {
+                "type": "header",
+                "content": "Cart Button Colors" 
+            },
+            {
+                "type": "color",
+                "id": "cart_btn_color",
+                "default": "#828282",
+                "label": "Text Color"
+            },
+            {
+                "type": "color",
+                "id": "cart_btn_bg",
+                "default": "#F0F2F2",
+                "label": "Background Color"
+            },
+            {
+                "type": "color",
+                "id": "cart_btn_border",
+                "default": "#C4C4C4",
+                "label": "Border Color"
+            },
+            {
+                "type": "header",
+                "content": "Submit Button Colors" 
+            },
+            {
+                "type": "color",
+                "id": "submit_btn_color",
+                "default": "#FFFFFF",
+                "label": "Text Color"
+            },
+            {
+                "type": "color",
+                "id": "submit_btn_bg",
+                "default": "#000000",
+                "label": "Background Color"
+            },
+            {
+                "type": "color",
+                "id": "submit_btn_border",
+                "default": "#000000",
+                "label": "Border Color"
+            },
+            {
+                "type": "header",
+                "content": "Icon Button Colors" 
+            },
+            {
+                "type": "color",
+                "id": "icon_btn_color",
+                "default": "#000000",
+                "label": "Text Color"
+            },
+            {
+                "type": "color",
+                "id": "icon_btn_bg",
+                "default": "#E6F1FA",
+                "label": "Background Color"
+            },
+            {
+                "type": "header",
+                "content": "Input Colors"
+            },
+            {
+                "type": "color",
+                "id": "input_color",
+                "default": "#3F3F3F",
+                "label": "Text Color"
+            },
+            {
+                "type": "color",
+                "id": "input_border",
+                "default": "#C4C4C4",
+                "label": "Background Color"
+            },
+            {
+                "type": "color",
+                "id": "label_color",
+                "default": "#3F3F3F",
+                "label": "Label Color"
+            }
+        ]
+    },
+    {
+        "name": "Typography",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Font Weight"
+            },
+            {
+                "type": "select",
+                "id": "font_title_weight",
+                "label": "Font Title Weight",
+                "options": [
+                    {
+                        "value": "400",
+                        "label": "400"
+                    },
+                    {
+                        "value": "500",
+                        "label": "500"
+                    },
+                    {
+                        "value": "600",
+                        "label": "600"
+                    }
+                ],
+                "default": "600"
+            },
+            {
+                "type": "select",
+                "id": "font_medium_weight",
+                "label": "Font Medium Weight",
+                "options": [
+                    {
+                        "value": "400",
+                        "label": "400"
+                    },
+                    {
+                        "value": "500",
+                        "label": "500"
+                    },
+                    {
+                        "value": "600",
+                        "label": "600"
+                    }
+                ],
+                "default": "500"
+            },
+            {
+                "type": "select",
+                "id": "font_body_weight",
+                "label": "Font Body Weight",
+                "options": [
+                    {
+                        "value": "400",
+                        "label": "400"
+                    },
+                    {
+                        "value": "500",
+                        "label": "500"
+                    },
+                    {
+                        "value": "600",
+                        "label": "600"
+                    }
+                ],
+                "default": "400"
+            }
+        ]
+    }
+]

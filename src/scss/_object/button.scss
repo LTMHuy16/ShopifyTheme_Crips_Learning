@@ -1,76 +1,44 @@
-button,
 .button {
     display: inline-block;
-    padding: 1rem 3rem;
-    color: $color-title;
-    background-color: $theme-color;
-    font-family: $font-title;
-    @include font-size(12, 1.5);
-    font-weight: $font-title-weight;
+    padding: 1.25rem 4.55rem;
+    font-family: $font-main;
+    @include font-size(14, 1.5);
+    font-weight: $font-medium-weight;
     text-transform: uppercase;
     border: 0.2rem solid;
     text-align: center;
     border-radius: 0.2rem;
-    border-color: $theme-color;
     outline: none;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
 
-.button {
-    &:hover {
-        color: $theme-color;
-        background-color: $color-title;
-        border-color: $color-title;
+    @include mq($mq-mob) {
+        @include font-size(18);
     }
 
-    &--secondary {
-        background-color: $color-title;
-        color: $theme-color;
-        border-color: $color-title;
-
-        &:hover {
-            color: $color-title;
-            background-color: $theme-color;
-            border-color: $theme-color;
-        }
+    /* BUTTON SIZE */
+    &--small {
+        
     }
 
-    &--third {
-        background-color: $color-light;
-        color: $color-title;
-        border-color: $theme-color;
-
-        &:hover {
-            background-color: $theme-color;
-            color: $color-title;
-            border-color: $theme-color;
-        }
-    }
-
-    // button banner
-    &--banner {
-        text-decoration: underline;
-    }
-
-    // button large
     &--medium {
-        padding: 1.2rem 3rem;
+        padding: 1.25rem 3.25rem;
+        @include font-size(14, 1.5);
+        letter-spacing: 0.15rem;
     }
 
-    &--icon {
-        display: inline-block;
-        min-width: unset;
-        padding: 0;
-        border: none;
-        outline: none;
-        margin: 0;
-        font-size: 0;
-        color: inherit;
-        background: none;
+    /* BUTTON TYPE */
+    &--banner {
+        letter-spacing: 0.05rem;
+        color: $color-btn-banner;
+        border-color: $color-btn-banner-border;
+        background-color: $color-btn-banner-bg;
     }
 
-    &--full {
-        width: 100%;
+    &--cart {
+        letter-spacing: 0.05rem;
+        color: $color-btn-cart;
+        border-color: $color-btn-cart-border;
+        background-color: $color-btn-cart-bg;
     }
 }

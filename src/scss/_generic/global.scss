@@ -6,10 +6,11 @@ html {
 }
 
 body {
-    font-family: $font-body;
+    padding: 1rem;
+    font-family: $font-main;
     font-weight: $font-body-weight;
-    @include font-size(16);
-    color: $color-title;
+    @include font-size(14);
+    color: $color-body;
 }
 
 a,
