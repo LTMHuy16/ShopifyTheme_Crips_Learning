@@ -1,11 +1,13 @@
 /*=================== 
     LAYOUT
 ==================== */
-$max-width: 126rem; // 1560px
-$max-width-large: 1560px;
-$max-width-small: 114rem; // 1140rem
-$spacing: 2.4rem; // 20px
-$spacing-wide: 6rem; // 60px
+$max-width: 192rem;
+$max-width-medium: 149.6rem;
+$max-width-small: 128.4rem;
+$spacing-mob: 1.4rem;
+$spacing-desktop: 2.1rem;
+$product-gutter: 2.6rem;
+$gutter: 1.5rem; // 1.5 * 2 = 3
 
 /*=================== 
     FONT FAMILY
@@ -56,9 +58,10 @@ $color-input-text: var(--color-input-text);
 $color-input-border: var(--color-input-border);
 $color-label-text: var(--color-label-text);
 
-
 /* FIXED COLORS */
 $color-primary: #e6f1fa;
+$color-black: #000000;
+$color-white: #ffffff;
 $color-main: #eb5757;
 $color-blue: #57a4eb;
 $color-blue1: #0f6db1;

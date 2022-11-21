@@ -8,11 +8,21 @@
         "theme_support_url": "https:\/\/support.shopify.com\/"
     },
     {
+        "name": "favicon",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "favicon",
+                "label": "Favicon"
+            }
+        ]
+    },
+    {
         "name": "Colors",
         "settings": [
             {
                 "type": "header",
-                "content": "Base Colors" 
+                "content": "Base Colors"
             },
             {
                 "type": "color",
@@ -46,7 +56,7 @@
             },
             {
                 "type": "header",
-                "content": "Controls Colors" 
+                "content": "Controls Colors"
             },
             {
                 "type": "color",
@@ -86,7 +96,7 @@
             },
             {
                 "type": "header",
-                "content": "Banner Button Colors" 
+                "content": "Banner Button Colors"
             },
             {
                 "type": "color",
@@ -108,7 +118,7 @@
             },
             {
                 "type": "header",
-                "content": "Cart Button Colors" 
+                "content": "Cart Button Colors"
             },
             {
                 "type": "color",
@@ -130,7 +140,7 @@
             },
             {
                 "type": "header",
-                "content": "Submit Button Colors" 
+                "content": "Submit Button Colors"
             },
             {
                 "type": "color",
@@ -152,7 +162,7 @@
             },
             {
                 "type": "header",
-                "content": "Icon Button Colors" 
+                "content": "Icon Button Colors"
             },
             {
                 "type": "color",
@@ -256,6 +266,56 @@
                     }
                 ],
                 "default": "400"
+            }
+        ]
+    },
+    {
+        "name": "Social Media",
+        "settings": [
+            {
+                "type": "text",
+                "id": "social_twitter_link",
+                "label": "Twitter"
+            },
+            {
+                "type": "text",
+                "id": "social_facebook_link",
+                "label": "Facebook"
+            },
+            {
+                "type": "text",
+                "id": "social_pinterest_link",
+                "label": "Pinterest"
+            },
+            {
+                "type": "text",
+                "id": "social_instagram_link",
+                "label": "Instagram"
+            },
+            {
+                "type": "text",
+                "id": "social_tiktok_link",
+                "label": "Tiktok"
+            },
+            {
+                "type": "text",
+                "id": "social_tumblr_link",
+                "label": "Tumblr"
+            },
+            {
+                "type": "text",
+                "id": "social_snapchat_link",
+                "label": "snapchat"
+            },
+            {
+                "type": "text",
+                "id": "social_youtube_link",
+                "label": "Youtube"
+            },
+            {
+                "type": "text",
+                "id": "social_vimeo_link",
+                "label": "Vimeo"
             }
         ]
     }

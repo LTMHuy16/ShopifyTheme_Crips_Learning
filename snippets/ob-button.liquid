@@ -1,18 +1,28 @@
 {%- liquid
-    assign button_icon = ''
+    assign button_class = 'button '
     
-    if cta_style != blank
-        assign cta_style = cta_style | prepend: 'button--' 
+    if button_style != blank
+        assign button_style = button_style | prepend: ' button--' 
     endif
+
+    if button_size != blank
+        assign button_size = button_size | prepend: ' button--' 
+    endif
+
+    if custom_class != blank
+        assign custom_class = ' ' | append: custom_class 
+    endif
+
+    assign button_class = button_class | append: button_style | append: button_size | append: custom_class
 %}
 
 {%- if text != blank -%}
     {%- if href != blank -%}
-        <a class="button {{ cta_style }} {{ cta_class }}" href="{{ href }}">
+        <a class="{{ button_class }}" href="{{ href }}">
             {{ text }}
         </a>
     {%- else -%}
-        <button  type="{{ type | default: 'button' }}" class="button {{ cta_style }} {{ cta_class }}">
+        <button type="{{ type | default: 'button' }}" class="{{ button_class }}">
             {{ text }}
         </button>
     {%- endif -%}

@@ -1,43 +1,40 @@
-{{ 'component-form-controls.css' | asset_url | stylesheet_tag }}
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+{{ 'component-mega-menu.css' | asset_url | stylesheet_tag }}
 
-<button class="button button--banner">shop now</button>
-<button class="button button--cart">shop now</button>
+<div class="container site-header__inner">
+    <button class="site-header__toggle-menu button button--icon hidden--desk js-toggle-menu" id="toggleMenu">
+        {% render 'ob-icon', icon: 'header-menu', height: '15', width: '20', class: 'site-header__toggle-menu-open'  %}
+        {% render 'ob-icon', icon: 'header-close', height: '17', width: '17', , class: 'site-header__toggle-menu-close'  %}
+    </button>
+    {%- render 'header-logo', logo_svg: section.settings.logo_svg, logo: section.settings.logo -%}
+    <div class="site-header__navbar scrollbar js-header-navbar">
+        {%- render 'header-search' -%}
+        {%- render 'mega-menu', menu: section.settings.mega_menu, level: 1 -%}
+    </div>
+    {%- render 'header-functions' -%}
+</div>
 
-<br>
-<br>
-<div class="form-control">
-    <div class="form-control__label">
-        <label class="label label--required">Street Address</label>
-    </div>
-    <div class="form-control__wrap">
-        <input class="form-control__input input" placeholder="Support message" type="text">
-        <span class="form-control__info success">This is a required field.</span>
-    </div>
-</div>
-<div class="form-control">
-    <div class="form-control__label">
-        <label class="label label--required">Street Address</label>
-    </div>
-    <div class="form-control__wrap">
-        <input class="form-control__input input" placeholder="Support message" type="text">
-        <span class="form-control__info success">This is a required field.</span>
-    </div>
-</div>
-<div class="form-control">
-    <div class="form-control__label">
-        <label class="label label--required">Street Address</label>
-    </div>
-    <div class="form-control__wrap">
-        <input class="form-control__input input" placeholder="Support message" type="text">
-        <span class="form-control__info info">This is a required field.</span>
-    </div>
-</div>
-<div class="form-control">
-    <div class="form-control__label">
-        <label class="label label--required">Street Address</label>
-    </div>
-    <div class="form-control__wrap">
-        <input class="form-control__input input input--error" placeholder="Support message" type="text">
-        <span class="form-control__info error">This is a required field.</span>
-    </div>
-</div>
+{{  'header.js' | asset_url | script_tag }}
+
+{% schema %}
+    {
+        "name": "Header",
+        "tag": "header",
+        "class": "site-header js-site-header js-currency",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "logo",
+                "label": "Logo"
+            }, {
+                "type": "textarea",
+                "id": "logo_svg",
+                "label": "Logo - SVG"
+            }, {
+                "type": "link_list",
+                "id": "mega_menu",
+                "label": "Mega Menu"
+            }
+        ]
+    }
+{% endschema %}

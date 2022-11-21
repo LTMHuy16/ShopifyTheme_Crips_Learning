@@ -1,0 +1,59 @@
+{%- comment -%}
+    Paramaters:
+        + menu: Object of link_list
+        + level: number of level of menu (1: main menu in navbar, 2: submenu(background image), 3: submenu)
+        + prev_title: name of parent menu (enable in menu level > 1)
+{%- endcomment -%}
+{%- assign menu_links = menu.links -%}
+
+{%- if menu_links.size > 0  and level != blank -%}
+
+    {%- assign nav_level_class = 'mega-menu--lv' | append: level -%}
+    {%- assign menu_level_class = 'mega-menu__list--lv' | append: level -%}
+
+    <nav class="mega-menu {{ nav_level_class }}">
+        <ul class="mega-menu__list  {{ menu_level_class }}" role="list">
+            {% for link in menu_links %}
+                {%- assign menu_item  = 'mega-menu__item--lv' | append: level -%}
+
+                <li class="mega-menu__item {{ menu_item }}">
+                    {%- liquid
+                        assign current_class   = ''
+                        assign link_class    = ''
+
+                        if link.current and level == 1
+                            assign current_class = 'current'
+                        endif
+
+                        assign link_class  = 'mega-menu__link--lv* ' | replace: '*', level
+
+                        if link.links.size > 0
+                            assign link_class = link_class | append: 'js-menu-link' 
+                        endif
+                    -%}
+                    <a href="{{ link.url }}" class="mega-menu__link {{ current_class }} {{ link_class }}" title="{{ link.title | escape }}">
+                        {{ link.title }}
+                        {%- if link.links.size > 0 -%}
+                            <span class="mega-menu__link-icon hidden--desk">
+                                {%- render 'ob-icon', icon: 'header-link-arrow', width: '6', height: '10'  -%}
+                            </span>
+                        {%- endif -%}
+                    </a>
+
+                    {%- if link.links.size > 0 -%}
+                        {%- assign next_level = level | plus: 1  -%}
+                        {%- render 'mega-menu', menu: link, level: next_level, prev_title: link.title  -%}
+                    {%- endif -%}
+                </li>
+            {% endfor %}
+            {%- if level > 1 -%}
+                <li class="mega-menu__item hidden--desk">
+                    <button type="button" class="mega-menu__back js-menu-back">
+                        {%- render 'ob-icon', icon: 'arrow-left', width: '24', height: '24' -%}
+                        {{ 'general.mega_menu.back' | t: name: prev_title }}
+                    </button>
+                </li>
+            {%- endif -%}
+        </ul>
+    </nav>
+{%- endif -%}

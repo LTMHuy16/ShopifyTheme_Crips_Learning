@@ -1,0 +1,14 @@
+<form action="{{ routes.search_url }}" method="get" role="search" class="site-header__search js-search">
+    <input
+    id="Search"
+    type="search"
+    name="q"
+    class="input site-header__search-input"
+    value="{{ search.terms | escape }}"
+    placeholder="{{ 'general.search.input_search' | t }}"
+    >
+    <button class="button button--small button--cart hidden--desk site-header__search-btn">{{ 'general.search.name' | t }}</button>
+    <input name="options[prefix]" class="hidden" type="hidden" value="last">
+</form>
+
+{{ 'search.js' | asset_url | script_tag }}

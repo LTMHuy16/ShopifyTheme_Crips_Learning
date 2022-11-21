@@ -1,0 +1,56 @@
+{
+  "general": {
+    "template_title": {
+      "blog": "Blog",
+      "home": "Home",
+      "collections": "Collections",
+      "account": "Your account",
+      "active_account": "Active account",
+      "addresses": "Address",
+      "login": "Login",
+      "logout": "Logout",
+      "order": "Order",
+      "register": "Register",
+      "reset_password": "Reset Pasword",
+      "gift_card": "Gift Card",
+      "password": "Reset Pasword",
+      "search": "Search Results for \"{{ term }}\" ",
+      "cart": "Cart",
+      "not_found": "404 Not Found"
+    },
+    "social": {
+      "alt_text": {
+        "share_on_facebook": "Share on Facebook",
+        "share_on_twitter": "Tweet on Twitter",
+        "share_on_pinterest": "Pin on Pinterest"
+      },
+      "links": {
+        "twitter": "Twitter",
+        "facebook": "Facebook",
+        "pinterest": "Pinterest",
+        "instagram": "Instagram",
+        "tumblr": "Tumblr",
+        "snapchat": "Snapchat",
+        "youtube": "YouTube",
+        "vimeo": "Vimeo",
+        "tiktok": "TikTok"
+      }
+    },
+    "search" : {
+      "name": "Find",
+      "input_search": "Type something ..."
+    },
+    "mega_menu": {
+      "back": "Back to {{ name }}"
+    }
+  },
+  "blogs": {},
+  "cart": {},
+  "collection": {},
+  "products": {},
+  "layout": {},
+  "customer": {},
+  "contact": {},
+  "home_page": {},
+  "gift_cards": {}
+}

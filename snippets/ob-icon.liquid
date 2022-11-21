@@ -1,0 +1,15 @@
+{% comment %}
+    Renders an svg icon
+    Accepts:
+    - icon: {String} Icon name (required)
+    - class: {String} Additional class name (optional)
+    - width: {Number} width attribute (optional)
+    - height: {Number} height attribute (optional)
+
+    Usage:
+    {% render 'object_icon', icon: 'heart' %}
+{% endcomment %}
+
+<svg class="icon {{ class }}" focusable="false" {%- if width != blank -%}width="{{ width }}"{%- endif -%} {%- if width != blank -%}height="{{ height }}"{%- endif -%}>
+    <use xlink:href="#icon-{{ icon }}"/>
+</svg>

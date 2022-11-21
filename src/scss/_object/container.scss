@@ -1,29 +1,37 @@
 .container {
-  max-width: $max-width;
-
-  padding: {
-    left: $spacing;
-    right: $spacing;
-  }
-
-  @include mq($mq-desk-lrg) {
-    padding: {
-      left: $spacing-wide;
-      right: $spacing-wide;
-    }
-  }
-
-  margin: {
-    left: auto;
-    right: auto;
-  }
-
-  &--full {
-    max-width: 100%;
+    max-width: $max-width;
 
     padding: {
-      left: 0;
-      right: 0;
+        left: $spacing-mob;
+        right: $spacing-mob;
     }
-  }
+
+    @include mq($mq-desk) {
+        padding: {
+            left: $spacing-desktop;
+            right: $spacing-desktop;
+        }
+    }
+
+    margin: {
+        left: auto;
+        right: auto;
+    }
+
+    &--small {
+        max-width: $max-width-small;
+    }
+
+    &--medium {
+        max-width: $max-width-medium;
+    }
+
+    &--full {
+        max-width: 100%;
+
+        padding: {
+            left: 0;
+            right: 0;
+        }
+    }
 }

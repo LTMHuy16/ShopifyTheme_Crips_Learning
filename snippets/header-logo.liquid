@@ -1,0 +1,16 @@
+<div class="site-header__logo">
+    <a href="{{ routes.root_url }}" class="site-header__logo-link">
+        {%- if logo_svg != blank -%}
+            {{ logo_svg | replace: '<svg', '<svg class="site-header__logo-svg"'  }}
+        {%- elsif logo != blank -%}
+            <img 
+                class="site-header__logo-img image__img" 
+                srcset="{{ logo | image_url: width: logo.width }} 1x, {{ logo | image_url: width: logo.width }} 2x"
+                alt="{{ logo.alt | default: shop.name | escape  }}"
+                width="{{ logo.width }}"
+                height="{{ logo.height }}"
+                loading="lazy"
+            />
+        {%- endif -%}
+    </a>
+</div>

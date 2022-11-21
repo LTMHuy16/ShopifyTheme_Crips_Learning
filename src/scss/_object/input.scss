@@ -2,16 +2,17 @@
 
 .input {
     font-family: $font-second;
-    padding: 0.9rem 1.6rem;
+    padding: 0.925rem 1.6rem;
     color: $color-input-text;
     @include font-size(13, 1.5);
-    font-weight: 400;
+    font-weight: $font-body-weight;
     border: 0.1rem solid $color-input-border;
     outline: none;
     transition: all 0.1s ease;
 
     @include mq($mq-mob) {
         @include font-size(16);
+        padding: 0.9rem 1.6rem;
     }
 
     &::placeholder {
@@ -21,7 +22,11 @@
 
     &:focus {
         border-width: 0.2rem;
-        padding: 0.8rem 1.6rem;
+        padding: 0.825rem 1.6rem;
+
+        @include mq($mq-mob) {
+            padding: 0.8rem 1.6rem;
+        }
     }
 
     &--error {
@@ -36,7 +41,7 @@
 .label {
     font-family: $font-second;
     @include font-size(12, 1.687);
-    font-weight: 400;
+    font-weight: $font-body-weight;
     color: $color-label-text;
 
     @include mq($mq-mob) {

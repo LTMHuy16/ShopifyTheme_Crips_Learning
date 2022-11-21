@@ -1,0 +1,143 @@
+@import "./_settings/core";
+
+.site-header {
+    position: sticky;
+    top: 0;
+    padding: 1.31rem 0;
+    background-color: $color-dark;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+    }
+
+    &__toggle-menu {
+        fill: $color-light;
+        background-color: $color-dark;
+
+        &-close {
+            display: none;
+        }
+
+        &.is-open & {
+            &-open {
+                display: none;
+            }
+
+            &-close {
+                display: block;
+            }
+        }
+    }
+
+    &__logo {
+        @include mq($mq-desk, max) {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        &-img {
+            max-width: 6.623rem;
+            height: 100%;
+            object-fit: cover;
+
+            @include mq($mq-desk) {
+                max-width: 9.4rem;
+            }
+        }
+    }
+
+    &__navbar {
+        @include mq($mq-desk, max) {
+            position: absolute;
+            top: 5rem;
+            left: -100%;
+            z-index: 999999;
+            padding: 1.3rem 0 3rem;
+            background-color: $color-black;
+            width: 100%;
+            max-width: 40rem;
+            box-shadow: rgba(0, 0, 0, 0.19) 0rem 1rem 2rem,
+                rgba(0, 0, 0, 0.23) 0rem 0.6rem 0.6rem;
+            height: 100vh;
+            overflow: hidden auto;
+            text-align: center;
+            transition: left 0.5s ease;
+
+            &.is-open {
+                left: 0;
+            }
+        }
+
+        @include mq($mq-mob, max) {
+            max-width: 100%;
+        }
+
+        @include mq($mq-desk) {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+        }
+    }
+
+    &__functions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+
+    &__search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 $spacing-mob;
+        margin-bottom: 1.2rem;
+
+        @include mq($mq-desk) {
+            order: 1;
+        }
+
+        &-input {
+            flex: 1;
+        }
+
+        &-btn {
+            position: absolute;
+            right: $spacing-mob;
+            top: 0;
+            height: 100%;
+            padding: {
+                right: 2.45rem;
+                left: 2.45rem;
+            }
+        }
+
+        &-icon {
+            padding: 0 0.75rem;
+        }
+    }
+
+    &__cart {
+        &-btn {
+            position: relative;
+            padding: 0 0.7rem;
+        }
+
+        &-qty {
+            position: absolute;
+            top: -0.4rem;
+            right: 0;
+            z-index: 4;
+            padding: 0.25rem 0.43rem;
+            pointer-events: none;
+            @include font-size(10, 1);
+            letter-spacing: 0.02rem;
+            text-align: center;
+            background-color: $color-error;
+            color: $color-light;
+            font-weight: $font-medium-weight;
+        }
+    }
+}

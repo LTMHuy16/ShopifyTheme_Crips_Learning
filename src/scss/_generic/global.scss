@@ -6,11 +6,11 @@ html {
 }
 
 body {
-    padding: 1rem;
     font-family: $font-main;
     font-weight: $font-body-weight;
     @include font-size(14);
     color: $color-body;
+    height: 1000vh;
 }
 
 a,
@@ -30,23 +30,4 @@ span {
     clip: rect(0 0 0 0);
     word-wrap: normal;
     @include font-size(16);
-}
-
-/*=================================
-    UTILITY CLASSES 
-================================ */
-.hidden {
-    display: none;
-
-    &--desk {
-        @include mq($mq-desk) {
-            display: none;
-        }
-    }
-
-    &--mob {
-        @include mq($mq-desk, max) {
-            display: none;
-        }
-    }
 }

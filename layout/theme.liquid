@@ -1,43 +1,39 @@
 <!doctype html>
 <html class="no-js" lang="{{ shop.locale }}" itemscope itemtype="http://schema.org/WebPage">
-  <head>
+    <head>
 
-    {% render 'header-title' %}
+        {% render 'header-title' %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="{{ settings.color_button }}">
-    <link rel="canonical" href="{{ canonical_url }}">
-    <meta name="format-detection" content="telephone=no">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="theme-color" content="{{ settings.color_button }}">
+        <link rel="canonical" href="{{ canonical_url }}">
+        <meta name="format-detection" content="telephone=no">
 
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
+        {%- if settings.favicon != blank -%}
+            <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+        {%- endif -%}
 
-    {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
+        {%- if page_description -%}
+            <meta name="description" content="{{ page_description | escape }}">
+        {%- endif -%}
 
-    {%- render 'head-css-variables' -%}
+        {%- render 'head-css-variables' -%}
 
-    {{ content_for_header }}
+        {{ content_for_header }}
 
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+        {{ 'base.css' | asset_url | stylesheet_tag }}
 
-  </head>
+    </head>
 
-	<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} store-{{store_name}}">
+    <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} store-{{store_name}}">
+        {%- section 'header' -%}
+        <main class="main" id="MainContent">
+            {{ content_for_layout }}
+        </main>
+        {%- section 'footer' -%}
+    </body>
 
-		<div id="PageContainer" class="page-container">
-			<header class="header">
-				{%- section 'header' -%}
-			</header>
-			<main class="main" id="MainContent">
-				{{ content_for_layout }}
-			</main>
-			{%- section 'footer' -%}
-		</div>
-
-	</body>
+    {%- render 'theme-icon' -%}
 </html>

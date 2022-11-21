@@ -1,0 +1,6 @@
+<div class="site-header__cart">
+    <a href="{{ routes.cart_url }}" class="site-header__cart-btn js-header-cart-btn">
+        {%- render 'ob-icon', icon: 'header-badge', width: '18', height: '22' -%}
+        <span class="site-header__cart-qty">{{ cart.item_count }}</span>
+    </a>
+</div>

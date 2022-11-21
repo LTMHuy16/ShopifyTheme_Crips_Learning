@@ -1,46 +1,64 @@
-<<<<<<< HEAD
-{% if template.name == 'product' %}
-    <title>{{ product.title  }}</title>
-
-{% elsif template.name == 'collection'%}
-    <title>{{ collection.title  }}</title>
-
-{% elsif template.name == 'blog' %}
-    <title>{{ blog.title  }}</title>
+{% if template.name == '404' %}
+    <title>{{ 'general.template_title.not_found' | t  }}</title>
 
 {% elsif template.name == 'article' %}
-    <title>{{ article.title  }}</title>
-
-{% elsif template.name == 'page' %}
-    <title>{{ page.title  }}</title>
-
-{% elsif template.name == 'index' %}
-    <title>Home</title>
-
-{% else %}
-    <title>Cripst</title>
-        
-
-=======
-{% if template.name == 'product' %}
-    <title>{{ product.title  }}</title>
-
-{% elsif template.name == 'collection'%}
-    <title>{{ collection.title  }}</title>
+    <title>Crisp - {{ article.title  }}</title>
 
 {% elsif template.name == 'blog' %}
-    <title>{{ blog.title  }}</title>
+    <title>Crisp - {{ blog.title }}</title>
 
-{% elsif template.name == 'article' %}
-    <title>{{ article.title  }}</title>
+{% elsif template.name == 'collection'%}
+    <title>Crisp - {{ collection.title  }}</title>
+
+{% elsif template.name == 'list-collections'%}
+    <title>Crisp - {{ 'general.template_title.collections' | t  }}</title>
+
+{% elsif template.name == 'customers/account'%}
+    <title>Crisp - {{ 'general.template_title.account' | t  }}</title>
+
+{% elsif template.name == 'customers/activate_account'%}
+    <title>Crisp - {{ 'general.template_title.active_account' | t  }}</title>
+
+{% elsif template.name == 'customers/addresses'%}
+    <title>Crisp - {{ 'general.template_title.account' | t  }}</title>
+
+{% elsif template.name == 'customers/login'%}
+    <title>Crisp - {{ 'general.template_title.login' | t  }}</title>
+
+{% elsif template.name == 'customers/order'%}
+    <title>Crisp - {{ 'general.template_title.order' | t  }}</title>
+
+{% elsif template.name == 'customers/reset_password'%}
+    <title>Crisp - {{ 'general.template_title.reset_password' | t  }}</title>
+
+{% elsif template.name == 'gift_card'%}
+    <title>Crisp - {{ 'general.template_title.gift_card' | t  }}</title>
+
+{% elsif template.name == 'search' %}
+    <title>{{ 'general.template_title.search' | t: search: search.terms  }}</title>
+
+{% elsif template.name == 'product' %}
+    <title>Crisp - {{ product.title  }}</title>
 
 {% elsif template.name == 'page' %}
-    <title>{{ page.title  }}</title>
+    <title>Crisp - {{ page.title  }}</title>
 
 {% elsif template.name == 'index' %}
-    <title>Home</title>
+    <title>Crisp - {{ 'general.template_title.home' | t  }}</title>
 
-{% else %}
-    <title>Cripst</title>
-        
+{% elsif request.path == routes.cart_url %}
+    <title>Crisp - {{ 'general.template_title.cart' | t  }}</title>
+
+{% elsif request.path == routes.account_url %}
+    <title>Crisp - {{ 'general.template_title.account' | t  }}</title>
+
+{% elsif request.path == routes.account_register_url %}
+    <title>Crisp - {{ 'general.template_title.register' | t  }}</title>
+
+{% elsif request.path == routes.account_login_url %}
+    <title>Crisp - {{ 'general.template_title.login' | t  }}</title>
+
+{% elsif request.path == routes.account_logout_url %}
+    <title>Crisp - {{ 'general.template_title.logout' | t  }}</title>
+
 {% endif %}

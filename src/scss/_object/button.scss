@@ -1,3 +1,13 @@
+@import "./_settings/core";
+
+button {
+    font-family: $font-main;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .button {
     display: inline-block;
     padding: 1.25rem 4.55rem;
@@ -5,10 +15,10 @@
     @include font-size(14, 1.5);
     font-weight: $font-medium-weight;
     text-transform: uppercase;
+    letter-spacing: 0.05rem;
     border: 0.2rem solid;
     text-align: center;
     border-radius: 0.2rem;
-    outline: none;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
@@ -18,27 +28,53 @@
 
     /* BUTTON SIZE */
     &--small {
-        
+        @include font-size(14, 1.5);
+        padding: 0.75rem 3.68rem;
     }
 
     &--medium {
-        padding: 1.25rem 3.25rem;
+        padding: 1.25rem 3.75rem;
         @include font-size(14, 1.5);
-        letter-spacing: 0.15rem;
     }
 
     /* BUTTON TYPE */
     &--banner {
-        letter-spacing: 0.05rem;
         color: $color-btn-banner;
         border-color: $color-btn-banner-border;
         background-color: $color-btn-banner-bg;
     }
 
     &--cart {
-        letter-spacing: 0.05rem;
         color: $color-btn-cart;
         border-color: $color-btn-cart-border;
         background-color: $color-btn-cart-bg;
+    }
+
+    &--submit {
+        color: $color-btn-submit;
+        border-color: $color-btn-submit-border;
+        background-color: $color-btn-submit-bg;
+    }
+
+    &--icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        padding: 0;
+        color: $color-btn-icon;
+        background-color: $color-btn-icon-bg;
+        height: 2.4rem;
+        width: 2.4rem;
+    }
+
+    &--control-text {
+        border: 0;
+        color: $color-btn-icon;
+        background-color: $color-btn-icon-bg;
+        font-family: $font-second;
+        @include font-size(14, 1.42);
+        text-transform: capitalize;
+        padding: 0.21rem 0.51rem;
     }
 }

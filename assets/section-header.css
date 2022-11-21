@@ -1,0 +1,116 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  padding: 1.31rem 0;
+  background-color: var(--color-dark); }
+
+.site-header__inner {
+  display: flex;
+  align-items: center; }
+
+.site-header__toggle-menu {
+  fill: var(--color-light);
+  background-color: var(--color-dark); }
+
+.site-header__toggle-menu-close {
+  display: none; }
+
+.site-header__toggle-menu.is-open .site-header__toggle-menu-open {
+  display: none; }
+
+.site-header__toggle-menu.is-open .site-header__toggle-menu-close {
+  display: block; }
+
+@media screen and (max-width: 960px) {
+  .site-header__logo {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%); } }
+
+.site-header__logo-img {
+  max-width: 6.623rem;
+  height: 100%;
+  object-fit: cover; }
+
+@media screen and (min-width: 960px) {
+  .site-header__logo-img {
+    max-width: 9.4rem; } }
+
+@media screen and (max-width: 960px) {
+  .site-header__navbar {
+    position: absolute;
+    top: 5rem;
+    left: -100%;
+    z-index: 999999;
+    padding: 1.3rem 0 3rem;
+    background-color: #000;
+    width: 100%;
+    max-width: 40rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0rem 1rem 2rem, rgba(0, 0, 0, 0.23) 0rem 0.6rem 0.6rem;
+    height: 100vh;
+    overflow: hidden auto;
+    text-align: center;
+    transition: left 0.5s ease; }
+  .site-header__navbar.is-open {
+    left: 0; } }
+
+@media screen and (max-width: 480px) {
+  .site-header__navbar {
+    max-width: 100%; } }
+
+@media screen and (min-width: 960px) {
+  .site-header__navbar {
+    display: flex;
+    align-items: center;
+    margin: 0 auto; } }
+
+.site-header__functions {
+  display: flex;
+  align-items: center;
+  margin-left: auto; }
+
+.site-header__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 1.4rem;
+  margin-bottom: 1.2rem; }
+
+@media screen and (min-width: 960px) {
+  .site-header__search {
+    order: 1; } }
+
+.site-header__search-input {
+  flex: 1; }
+
+.site-header__search-btn {
+  position: absolute;
+  right: 1.4rem;
+  top: 0;
+  height: 100%;
+  padding-right: 2.45rem;
+  padding-left: 2.45rem; }
+
+.site-header__search-icon {
+  padding: 0 0.75rem; }
+
+.site-header__cart-btn {
+  position: relative;
+  padding: 0 0.7rem; }
+
+.site-header__cart-qty {
+  position: absolute;
+  top: -0.4rem;
+  right: 0;
+  z-index: 4;
+  padding: 0.25rem 0.43rem;
+  pointer-events: none;
+  font-size: 10px;
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.02rem;
+  text-align: center;
+  background-color: var(--color-error);
+  color: var(--color-light);
+  font-weight: var(--font-medium-weight); }
