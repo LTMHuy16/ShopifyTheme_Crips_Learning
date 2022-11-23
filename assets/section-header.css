@@ -1,6 +1,7 @@
 .site-header {
   position: sticky;
   top: 0;
+  z-index: 99999;
   padding: 1.31rem 0;
   background-color: var(--color-dark); }
 
@@ -8,18 +9,30 @@
   display: flex;
   align-items: center; }
 
-.site-header__toggle-menu {
-  fill: var(--color-light);
-  background-color: var(--color-dark); }
-
-.site-header__toggle-menu-close {
-  display: none; }
-
-.site-header__toggle-menu.is-open .site-header__toggle-menu-open {
-  display: none; }
-
-.site-header__toggle-menu.is-open .site-header__toggle-menu-close {
-  display: block; }
+@media screen and (max-width: 960px) {
+  .site-header__toggle-menu {
+    fill: var(--color-light);
+    background-color: var(--color-dark); }
+  .site-header__toggle-menu::before {
+    content: "";
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    background-color: transparent; }
+  .site-header__toggle-menu.is-open::before {
+    opacity: 1;
+    pointer-events: all; }
+  .site-header__toggle-menu-close {
+    display: none; }
+  .site-header__toggle-menu.is-open .site-header__toggle-menu-open {
+    display: none; }
+  .site-header__toggle-menu.is-open .site-header__toggle-menu-close {
+    display: block; } }
 
 @media screen and (max-width: 960px) {
   .site-header__logo {
@@ -70,6 +83,26 @@
   align-items: center;
   margin-left: auto; }
 
+@media screen and (min-width: 960px) {
+  .site-header__functions {
+    margin-left: 0; } }
+
+@media screen and (min-width: 960px) {
+  .site-header__customer {
+    display: flex;
+    align-items: center;
+    margin-right: 3rem;
+    column-gap: 1.2rem; } }
+
+@media screen and (min-width: 960px) {
+  .site-header__customer-link {
+    text-transform: uppercase;
+    font-weight: var(--font-title-weight); } }
+
+.site-header__wishlist {
+  background-color: transparent;
+  margin-right: 2rem; }
+
 .site-header__search {
   position: relative;
   display: flex;
@@ -79,7 +112,14 @@
 
 @media screen and (min-width: 960px) {
   .site-header__search {
-    order: 1; } }
+    position: relative;
+    order: 1;
+    margin-bottom: 0;
+    padding: 0 0 0 1.4rem; } }
+
+@media screen and (min-width: 1440px) {
+  .site-header__search {
+    width: 32rem; } }
 
 .site-header__search-input {
   flex: 1; }
@@ -94,6 +134,14 @@
 
 .site-header__search-icon {
   padding: 0 0.75rem; }
+
+@media screen and (min-width: 960px) {
+  .site-header__search-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    padding: 0; } }
 
 .site-header__cart-btn {
   position: relative;

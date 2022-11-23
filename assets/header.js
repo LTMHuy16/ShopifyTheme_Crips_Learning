@@ -1,11 +1,11 @@
 class Header {
     constructor() {
-        this.header         = document.querySelector(".js-site-header");
-        this.toggleMenuBtn  = this.header.querySelector(".js-toggle-menu");
-        this.searchIconBtn  = this.header.querySelector(".js-search-icon-btn");
-        this.headerNavbar   = this.header.querySelector(".js-header-navbar");
-        this.menuLinkLv1    = this.header.querySelectorAll(".js-menu-link");
-        this.menuBack       = this.header.querySelectorAll(".js-menu-back");
+        this.header = document.querySelector(".js-site-header");
+        this.toggleMenuBtn = this.header.querySelector(".js-toggle-menu");
+        this.searchIconBtn = this.header.querySelector(".js-search-icon-btn");
+        this.headerNavbar = this.header.querySelector(".js-header-navbar");
+        this.menuLinkLv1 = this.header.querySelectorAll(".js-menu-link");
+        this.menuBack = this.header.querySelectorAll(".js-menu-back");
 
         this.bindEvents();
     }
@@ -14,7 +14,6 @@ class Header {
         this.toggleMenu();
         this.toggleSubMenu();
         this.backParentMenu();
-        this.toggleMenuLv2();
     }
 
     toggleMenu() {
@@ -47,6 +46,4 @@ class Header {
     }
 }
 
-window.addEventListener("load", () => {
-    new Header();
-});
+new Header();

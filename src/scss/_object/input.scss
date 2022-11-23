@@ -36,6 +36,26 @@
     &--success {
         border-color: $color-success;
     }
+
+    &--header {
+        @include mq($mq-desk) {
+            background-color: transparent;
+            color: $color-light;
+            border-color: transparent;
+            @include font-size(14, 1.42);
+            padding: 0.5rem 0.5rem;
+            border-bottom: 0.1rem solid $color-white;
+
+            &::placeholder {
+                color: $color-grey-3;
+            }
+
+            &:focus {
+                padding: 0.5rem 0.5rem;
+                border-width: 0.1rem;
+            }
+        }
+    }
 }
 
 .label {

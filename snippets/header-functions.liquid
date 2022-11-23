@@ -2,5 +2,23 @@
     <button class="site-header__search-icon hidden--desk js-search-icon-btn">
         {%- render 'ob-icon', icon: 'header-search', width: '20', height: '20' -%}
     </button>
+
+    <div class="site-header__customer text-light hidden--mob h7">
+        {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+                <a class="site-header__customer-link" href="{{ routes.account_url }}" class="">{{ 'customer.controls.account' | t }}</a>
+            {% else %}
+                <a class="site-header__customer-link" href="{{ routes.account_login_url }}" class="">{{ 'customer.controls.sign_in' | t }}</a>
+                {% if shop.customer_accounts_optional %}
+                    <a class="site-header__customer-link" href="{{ routes.account_register_url }}" class="">{{ 'customer.controls.create_account' | t }}</a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <button class="button button--icon site-header__wishlist hidden--mob">
+        {%- render 'ob-icon', icon: 'heart', width: '23', height: '22' -%}
+    </button>
+    
     {%- render 'header-cart' -%}
 </div>

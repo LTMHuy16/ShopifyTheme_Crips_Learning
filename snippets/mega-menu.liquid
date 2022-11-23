@@ -1,25 +1,44 @@
 {%- comment -%}
     Paramaters:
         + menu: Object of link_list
-        + level: number of level of menu (1: main menu in navbar, 2: submenu(background image), 3: submenu)
-        + prev_title: name of parent menu (enable in menu level > 1)
+        + level: number of level of menu (1: main menu in navbar, 2: submenu(background image), 3: submenu) {required}
+        + prev_title: name of parent menu (enable in menu level > 1) {required}
+        + bg_image: Background Image (get form menu lv1 and render in menu lv2) {optonal}
+    
+    Note: 
+        + Background Image: LV2 in desktop (in menu admin (format): Home | abc_bg.png)
 {%- endcomment -%}
 {%- assign menu_links = menu.links -%}
 
 {%- if menu_links.size > 0  and level != blank -%}
 
-    {%- assign nav_level_class = 'mega-menu--lv' | append: level -%}
-    {%- assign menu_level_class = 'mega-menu__list--lv' | append: level -%}
+    {%- liquid
+        assign nav_level_class  = 'mega-menu--lv' | append: level
+        assign menu_level_class = 'mega-menu__list--lv' | append: level
+        assign bg_style         = ''
 
-    <nav class="mega-menu {{ nav_level_class }}">
+        if bg_image != blank
+            assign bg_image_url  = bg_image | file_img_url: ''
+            assign bg_style    = 'style="background-image: url(*);"' | replace: '*', bg_image_url
+        endif
+    -%}
+
+    <nav class="mega-menu {{ nav_level_class }}" {{ bg_style }}>
         <ul class="mega-menu__list  {{ menu_level_class }}" role="list">
             {% for link in menu_links %}
                 {%- assign menu_item  = 'mega-menu__item--lv' | append: level -%}
 
                 <li class="mega-menu__item {{ menu_item }}">
                     {%- liquid
-                        assign current_class   = ''
-                        assign link_class    = ''
+                        assign current_class  = ''
+                        assign link_class     = ''
+                        assign bg_image       = ''
+                        assign link_title     = link.title
+
+                        if level == 1 and link_title contains '|||'
+                            assign bg_image   = link_title | split: '|||' | last | strip
+                            assign link_title = link_title | split: '|||' | first
+                        endif 
 
                         if link.current and level == 1
                             assign current_class = 'current'
@@ -31,8 +50,8 @@
                             assign link_class = link_class | append: 'js-menu-link' 
                         endif
                     -%}
-                    <a href="{{ link.url }}" class="mega-menu__link {{ current_class }} {{ link_class }}" title="{{ link.title | escape }}">
-                        {{ link.title }}
+                    <a href="{{ link.url }}" class="mega-menu__link {{ current_class }} {{ link_class }}" title="{{ link_title | escape }}">
+                        {{ link_title }}
                         {%- if link.links.size > 0 -%}
                             <span class="mega-menu__link-icon hidden--desk">
                                 {%- render 'ob-icon', icon: 'header-link-arrow', width: '6', height: '10'  -%}
@@ -41,8 +60,8 @@
                     </a>
 
                     {%- if link.links.size > 0 -%}
-                        {%- assign next_level = level | plus: 1  -%}
-                        {%- render 'mega-menu', menu: link, level: next_level, prev_title: link.title  -%}
+                        {%- assign next_level = level | plus: 1 -%}
+                        {%- render 'mega-menu', menu: link, level: next_level, prev_title: link_title, bg_image: bg_image  -%}
                     {%- endif -%}
                 </li>
             {% endfor %}

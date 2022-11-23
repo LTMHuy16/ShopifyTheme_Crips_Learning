@@ -10,7 +10,7 @@ button {
 
 .button {
     display: inline-block;
-    padding: 1.25rem 4.55rem;
+    padding: 0.8rem 2.4rem;
     font-family: $font-main;
     @include font-size(14, 1.5);
     font-weight: $font-medium-weight;
@@ -23,6 +23,7 @@ button {
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     @include mq($mq-mob) {
+        padding: 1.25rem 4.55rem;
         @include font-size(18);
     }
 

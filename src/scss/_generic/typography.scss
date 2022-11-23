@@ -10,14 +10,18 @@ h6 {
 
 h1,
 .h1 {
-    @include font-size(68, 1.11);
+    @include font-size(32, 1.11);
     font-weight: $font-title-weight;
 
     @include mq(($mq-mob, $mq-desk)) {
-        @include font-size(75);
+        @include font-size(42);
     }
 
-    @include mq($mq-desk) {
+    @include mq(($mq-desk, $mq-desk-lrg)) {
+        @include font-size(60);
+    }
+
+    @include mq($mq-desk-lrg) {
         @include font-size(86);
     }
 }
@@ -137,4 +141,3 @@ h6,
         font-family: $font-second;
     }
 }
-

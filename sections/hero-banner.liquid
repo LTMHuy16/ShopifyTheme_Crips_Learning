@@ -1,9 +1,241 @@
+{%- liquid
+    assign block_size = section.blocks.size
+    assign carousel = section.settings.ue_carousel
+    assign spacing_desktop = section.settings.spacing_desktop
+    assign spacing_mobile = section.settings.spacing_mobile
+-%}
+
+{%- if block_size > 0 -%}
+    {{ 'section-hero-banner.css' | asset_url | stylesheet_tag }}
+
+    <div class="hero-banner">
+        <div class="hero-banner__inner container">
+            {%- for block in section.blocks -%}
+                {%- liquid
+                    assign sale_img_small = block.settings.sale_small
+                    assign sale_img_large = block.settings.sale_large
+                -%}
+                {%- if sale_img_small != nil or sale_img_large != nil -%}
+                    <div class="hero-banner__sales">
+                        <div class="hero-banner__sales-small">
+                            {%- assign image_size = '480x800,480x800,137x207,137x207' -%}
+                            {%- render 'ob-image', image: sale_img_small, image_size: image_size  -%}
+                        </div>
+                        <div class="hero-banner__sales-larges">
+                            {%- assign image_size = '480x800,480x800,137x207,137x207' -%}
+                            {%- render 'ob-image', image: sale_img_large, image_size: image_size  -%}
+                        </div>
+                    </div>
+                {%- endif -%}
+                <div class="hero-banner__content">
+                    {%- render 'ob-content', block: block, button_class: "button--hero-banner", class: 'hero-banner' -%}
+                </div>
+                <div class="hero-banner__background">
+                    {%- assign image_size = '1800x800,1200x600,800x600,560x600' -%}
+                    {%- render 'ob-image', block: block, image_size: image_size ,image_type: 'ratio', picture_modified: 'hero-banner' -%}
+                </div>
+            {%- endfor -%}
+        </div>  
+    </div>
+{%- endif -%}
+
+
 {%- schema -%}
     {
         "name": "Hero",
         "tag": "section",
-        "settings": [],
-        "blocks": [],
+        "settings": [
+            {
+                "type": "select",
+                "id": "ue_carousel",
+                "label": "Use Carousel",
+                "options": [
+                    { "value": "yes", "label": "Yess" },
+                    { "value": "no", "label": "No" }
+                ],
+                "default": "yes"
+            },
+            {
+                "type": "range",
+                "id": "spacing_desktop",
+                "label": "Desktop Margin",
+                "min": 0,
+                "max": 120,
+                "default": 120,
+                "step": 2,
+                "unit": "px"
+            },
+            {
+                "type": "range",
+                "id": "spacing_mobile",
+                "label": "Mobile Margin",
+                "min": 0,
+                "max": 120,
+                "default": 48,
+                "step": 2,
+                "unit": "px"
+            }
+        ],
+        "blocks": [
+            {
+                "name": "Banner",
+                "type": "banner",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Background Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Background Image Desktop"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image_mobile",
+                        "label": "Background Image Mobile"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Sale Images"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "sale_small",
+                        "label": "Sale Image Small"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "sale_large",
+                        "label": "Sale Image Large"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Content - Setting"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_position",
+                        "label": "Position",
+                        "options": [
+                            { "value": "located", "label": "Located on the image" },
+                            { "value": "below", "label": "Below the image" },
+                            { "value": "above", "label": "Above the image" }
+                        ],
+                        "default": "located"
+                    },
+                    {
+                        "type": "select",
+                        "id": "vertical",
+                        "label": "Vertical",
+                        "options": [
+                            { "value": "top", "label": "Top" },
+                            { "value": "middle", "label": "Middle" },
+                            { "value": "bottom", "label": "Bottom" }
+                        ],
+                        "default": "middle",
+                        "info": "Use for Located on the image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "horizontal",
+                        "label": "Horizontal",
+                        "options": [
+                            { "value": "left", "label": "Left" },
+                            { "value": "center", "label": "Center" },
+                            { "value": "right", "label": "Right" }
+                        ],
+                        "default": "center"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Content"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_color",
+                        "label": "Text Color",
+                        "options": [
+                            { "value": "text-light", "label": "Light" },
+                            { "value": "text-dark", "label": "Dark" }
+                        ],
+                        "default": "text-dark"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "select",
+                        "id": "title_size",
+                        "label": "Title - Size",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" }
+                        ],
+                        "default": "h2"
+                    },
+                    {
+                        "type": "text",
+                        "id": "subtitle",
+                        "label": "Subtitle"
+                    },
+                    {
+                        "type": "select",
+                        "id": "subtitle_size",
+                        "label": "Subtitle - Size",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" }
+                        ],
+                        "default": "h7"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "body",
+                        "label": "Body",
+                        "default": "Lorem ipsum dolor sit amet"
+                    },
+                    {
+                        "type": "select",
+                        "id": "body_size",
+                        "label": "Body - Size",
+                        "options": [
+                            { "value": "h1", "label": "H1" },
+                            { "value": "h2", "label": "H2" },
+                            { "value": "h3", "label": "H3" },
+                            { "value": "h4", "label": "H4" },
+                            { "value": "h5", "label": "H5" },
+                            { "value": "h6", "label": "H6" },
+                            { "value": "h7", "label": "H7" }
+                        ],
+                        "default": "h7"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text",
+                        "label": "CTA - Text",
+                        "default": "Shop Now"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_link",
+                        "label": "CTA - Link"
+                    }
+                ]
+            }
+        ],
         "presets": [
             {
                 "name": "Hero"

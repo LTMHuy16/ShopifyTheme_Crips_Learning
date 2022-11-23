@@ -3,10 +3,13 @@
     id="Search"
     type="search"
     name="q"
-    class="input site-header__search-input"
+    class="input input--header site-header__search-input"
     value="{{ search.terms | escape }}"
     placeholder="{{ 'general.search.input_search' | t }}"
     >
+    <label for="Search" class="site-header__search-icon hidden--mob">
+        {% render 'ob-icon', icon: 'header-input-search', height: '13', width: '13'  %}
+    </label>
     <button class="button button--small button--cart hidden--desk site-header__search-btn">{{ 'general.search.name' | t }}</button>
     <input name="options[prefix]" class="hidden" type="hidden" value="last">
 </form>

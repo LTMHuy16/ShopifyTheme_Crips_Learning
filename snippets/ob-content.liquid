@@ -1,3 +1,12 @@
+{%- comment -%}
+    Paramaters: 
+        + block: Content block standard settings {required}
+        + button_class: button custom class {optional}
+        + class: modified class for title, subtitle, body and buttons
+
+    Usage:  {%- render 'ob-content', block: block, class: 'banner', button_clas: 'optional' -%}
+{%- endcomment -%}
+
 {%- liquid
     if block 
         assign title = block.settings.title
@@ -42,10 +51,11 @@
         assign title_class = title_class | append: ' content__title--' | append: class
         assign subtitle_class = subtitle_class | append: ' content__subtitle--' | append: class
         assign body_class = body_class | append: ' content__body--' | append: class
+        assign buttons_class = buttons_class | append: ' content__buttons--' | append: class 
     endif
 %}
 
-<div class="{{ content_color }}">
+<div class="content {{ content_color }}">
     {%- if title != blank -%}
         <h2 class="{{ title_class }} {{ title_size }}">{{ title }}</h2>
     {%- endif -%}
@@ -62,11 +72,11 @@
         <div class="{{ buttons_class }}">
 
             {%- if button_text != blank -%}
-                {%- render 'ob-button', text: button_text, href: button_link, button_style: button_style, button_icon: button_icon, button_class: button_class -%}
+                {%- render 'ob-button', text: button_text, href: button_link, button_style: button_style, button_icon: button_icon, custom_class: button_class -%}
             {%- endif -%}
 
             {%- if button_text_2 != blank -%}
-                {%- render 'ob-button', text: button_text_2, href: button_link_2, button_style: button_style_2, icon: button_icon_2, button_class: button_class -%}
+                {%- render 'ob-button', text: button_text_2, href: button_link_2, button_style: button_style_2, icon: button_icon_2, custom_class: button_class -%}
             {%- endif -%}
         </div>
     {%- endif -%}

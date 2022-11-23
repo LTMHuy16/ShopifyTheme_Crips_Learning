@@ -3,6 +3,7 @@
 .site-header {
     position: sticky;
     top: 0;
+    z-index: 99999;
     padding: 1.31rem 0;
     background-color: $color-dark;
 
@@ -12,20 +13,42 @@
     }
 
     &__toggle-menu {
-        fill: $color-light;
-        background-color: $color-dark;
+        @include mq($mq-desk, max) {
+            fill: $color-light;
+            background-color: $color-dark;
 
-        &-close {
-            display: none;
-        }
+            &::before {
+                content: "";
+                position: fixed;
+                top: 5rem;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 99;
+                opacity: 0;
+                pointer-events: none;
+                background-color: transparent;
+            }
 
-        &.is-open & {
-            &-open {
-                display: none;
+            &.is-open {
+                &::before {
+                    opacity: 1;
+                    pointer-events: all;
+                }
             }
 
             &-close {
-                display: block;
+                display: none;
+            }
+
+            &.is-open & {
+                &-open {
+                    display: none;
+                }
+
+                &-close {
+                    display: block;
+                }
             }
         }
     }
@@ -86,6 +109,31 @@
         display: flex;
         align-items: center;
         margin-left: auto;
+
+        @include mq($mq-desk) {
+            margin-left: 0;
+        }
+    }
+
+    &__customer {
+        @include mq($mq-desk) {
+            display: flex;
+            align-items: center;
+            margin-right: 3rem;
+            column-gap: 1.2rem;
+        }
+
+        &-link {
+            @include mq($mq-desk) {
+                text-transform: uppercase;
+                font-weight: $font-title-weight;
+            }
+        }
+    }
+
+    &__wishlist {
+        background-color: transparent;
+        margin-right: 2rem;
     }
 
     &__search {
@@ -96,7 +144,14 @@
         margin-bottom: 1.2rem;
 
         @include mq($mq-desk) {
+            position: relative;
             order: 1;
+            margin-bottom: 0;
+            padding: 0 0 0 $spacing-mob;
+        }
+
+        @include mq($mq-desk-lrg) {
+            width: 32rem;
         }
 
         &-input {
@@ -116,6 +171,14 @@
 
         &-icon {
             padding: 0 0.75rem;
+
+            @include mq($mq-desk) {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translate(-50%, -50%);
+                padding: 0;
+            }
         }
     }
 
