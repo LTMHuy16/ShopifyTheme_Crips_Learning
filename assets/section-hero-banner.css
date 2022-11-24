@@ -1,14 +1,66 @@
-.hero-banner__inner {
-  position: relative; }
+.hero-banner {
+  padding: 0; }
 
-.hero-banner__content {
-  padding: 3rem 1.4rem 1rem;
-  text-align: center; }
+@media screen and (min-width: 960px) {
+  .hero-banner {
+    padding: 0 2.1rem; } }
 
-.hero-banner__background {
-  position: absolute;
-  top: 0;
-  right: 0;
+.hero-banner__slide {
+  background-size: cover;
+  background-position: center;
+  height: 62.4vh; }
+
+@media screen and (min-width: 960px) {
+  .hero-banner__slide {
+    height: 80rem; } }
+
+.hero-banner__slide-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 3rem 0 1.1rem; }
+
+@media screen and (min-width: 960px) {
+  .hero-banner__slide-inner {
+    flex-direction: row;
+    max-width: 146rem;
+    padding: 4.7rem 0;
+    margin: 0 auto; } }
+
+.hero-banner__sales {
+  padding: 0 5.7rem;
+  height: 51.6%;
+  width: 100%; }
+
+@media screen and (min-width: 960px) {
+  .hero-banner__sales {
+    order: 1; } }
+
+.hero-banner__sales-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
-  z-index: -1; }
+  max-width: 250px;
+  margin: 0 auto; }
+
+.hero-banner__sales-small {
+  max-width: 60%;
+  filter: drop-shadow(1rem 1rem 2.4rem rgba(0, 0, 0, 0.25)); }
+
+.hero-banner__sales-large {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 66.6666%;
+  filter: drop-shadow(1rem 1rem 2.4rem rgba(0, 0, 0, 0.25)); }
+
+.hero-banner__content {
+  margin-top: auto;
+  padding: 0 1.4rem 1rem;
+  text-align: center; }

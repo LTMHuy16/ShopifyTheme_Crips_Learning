@@ -8,34 +8,40 @@
 {%- if block_size > 0 -%}
     {{ 'section-hero-banner.css' | asset_url | stylesheet_tag }}
 
-    <div class="hero-banner">
-        <div class="hero-banner__inner container">
+    <div class="hero-banner container">
+        <div class="hero-banner__container">
             {%- for block in section.blocks -%}
                 {%- liquid
+                    assign background_img = block.settings.bg_img | img_url: 'master'
                     assign sale_img_small = block.settings.sale_small
                     assign sale_img_large = block.settings.sale_large
+                    assign bg_style       = ''
+
+                    unless background_img contains 'no-image'
+                        assign bg_style = 'style="background-image: url(*);"' | replace: '*', background_img
+                    endunless
                 -%}
-                {%- if sale_img_small != nil or sale_img_large != nil -%}
-                    <div class="hero-banner__sales">
-                        <div class="hero-banner__sales-small">
-                            {%- assign image_size = '480x800,480x800,137x207,137x207' -%}
-                            {%- render 'ob-image', image: sale_img_small, image_size: image_size  -%}
-                        </div>
-                        <div class="hero-banner__sales-larges">
-                            {%- assign image_size = '480x800,480x800,137x207,137x207' -%}
-                            {%- render 'ob-image', image: sale_img_large, image_size: image_size  -%}
+                <div class="hero-banner__slide" {{ bg_style}}>
+                    <div class="hero-banner__slide-inner">
+                        {%- if sale_img_small != nil or sale_img_large != nil -%}
+                            <div class="hero-banner__sales">
+                                <div class="hero-banner__sales-inner">
+                                    <picture class="hero-banner__sales-small">
+                                        <img class="image__img image__img--full" src="{{ sale_img_small | image_url: width: 122 }}" alt="{{ sale_img_small.alt }}">
+                                    </picture>
+                                    <picture class="hero-banner__sales-large">
+                                        <img class="image__img image__img--full" src="{{ sale_img_large | image_url: width: 137 }}" alt="{{ sale_img_large.alt }}">
+                                    </picture>
+                                </div>
+                            </div>
+                        {%- endif -%}
+                        <div class="hero-banner__content">
+                            {%- render 'ob-content', block: block, button_class: "button--hero-banner", class: 'hero-banner' -%}
                         </div>
                     </div>
-                {%- endif -%}
-                <div class="hero-banner__content">
-                    {%- render 'ob-content', block: block, button_class: "button--hero-banner", class: 'hero-banner' -%}
-                </div>
-                <div class="hero-banner__background">
-                    {%- assign image_size = '1800x800,1200x600,800x600,560x600' -%}
-                    {%- render 'ob-image', block: block, image_size: image_size ,image_type: 'ratio', picture_modified: 'hero-banner' -%}
                 </div>
             {%- endfor -%}
-        </div>  
+        </div>
     </div>
 {%- endif -%}
 
@@ -87,13 +93,8 @@
                     },
                     {
                         "type": "image_picker",
-                        "id": "image",
-                        "label": "Background Image Desktop"
-                    },
-                    {
-                        "type": "image_picker",
-                        "id": "image_mobile",
-                        "label": "Background Image Mobile"
+                        "id": "bg_img",
+                        "label": "Background Image"
                     },
                     {
                         "type": "header",

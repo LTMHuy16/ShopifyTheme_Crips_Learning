@@ -116,7 +116,7 @@
             {%- liquid
                 if image_mobile
                     assign image_mobile_url = image_mobile | image_url: width: 'master'
-
+    
                     unless image_mobile_url contains 'no-image' and image_mobile_url contains '.gif'
                         assign image = image_mobile
                     endunless

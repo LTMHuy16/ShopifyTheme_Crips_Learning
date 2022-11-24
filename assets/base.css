@@ -580,6 +580,10 @@ button {
 .image__img {
   width: 100%; }
 
+.image__img--full {
+  height: 100%;
+  object-fit: cover; }
+
 .image-ratio {
   position: relative; }
 
@@ -599,13 +603,6 @@ button {
 
 .image-ratio__pic--hero-banner {
   padding-bottom: 154%; }
-
-.image-ratio__pic--product-item {
-  transition: opacity 0.25s ease;
-  padding-bottom: 141%; }
-
-.image-ratio__pic--product {
-  padding-bottom: 150%; }
 
 .image-ratio__img {
   position: absolute;
